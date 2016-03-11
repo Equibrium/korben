@@ -7,7 +7,7 @@
 meteor-base             # Packages every Meteor app needs to have
 mobile-experience       # Packages for a great mobile UX
 mongo                   # The database Meteor supports right now
-blaze-html-templates    # Compile .html files into Meteor Blaze views
+#blaze-html-templates    # Compile .html files into Meteor Blaze views
 session                 # Client-side reactive dictionary for your app
 jquery                  # Helpful client-side library
 tracker                 # Meteor's client-side reactive programming library
@@ -90,6 +90,7 @@ digilord:faker
 anti:fake
 
 ### Template ###
+peerlibrary:blaze-components
 aldeed:autoform
 #natestrauser:select2
 #zimme:select2-bootstrap3-css
@@ -123,7 +124,6 @@ aldeed:tabular
 miro:json2html
 
 ### Modal, Alert ###
-mizzao:bootboxjs
 theara:alertifyjs
 czbaker:lightbox2
 themeteorchef:bert
@@ -152,10 +152,6 @@ nilsdannemann:pdfmake
 meteorhacks:npm
 npm-container
 
-### Viewmodel ###
-#peerlibrary:blaze-components
-#dalgard:viewmodel
-
 ### Others ###
 underscorestring:underscore.string
 erasaur:meteor-lodash
@@ -166,7 +162,7 @@ numeral:numeral
 natestrauser:animate-css
 rzymek:fullcalendar
 #meteorhacks:kadira
-matteodem:easy-search
+#matteodem:easy-search
 simple:markdown-templating
 
 ### Local ###

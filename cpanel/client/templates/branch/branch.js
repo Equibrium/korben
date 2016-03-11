@@ -54,19 +54,39 @@ AutoForm.hooks({
             }
         },
         onSuccess: function (formType, result) {
-            alertify.success('Success');
+            Bert.alert({
+                title: 'Success',
+                message: 'You entry is successful',
+                type: 'success'
+            });
+            // alertify.success('Success');
         },
         onError: function (formType, error) {
             alertify.error(error.message);
+            Bert.alert({
+                title: 'Error',
+                message: error.message,
+                type: 'danger'
+            });
         }
     },
     cpanel_branchUpdate: {
         onSuccess: function (formType, result) {
             alertify.branch().close();
-            alertify.success('Success');
+            // alertify.success('Success');
+            Bert.alert({
+                title: 'Success',
+                message: 'You entry is successful',
+                type: 'success'
+            });
         },
         onError: function (formType, error) {
-            alertify.error(error.message);
+            // alertify.error(error.message);
+            Bert.alert({
+                title: 'Error',
+                message: error.message,
+                type: 'danger'
+            });
         }
     }
 });
