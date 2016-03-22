@@ -1,5 +1,5 @@
 <!--Index-->
-<template name="sample_order">
+<template name="Sample_order">
     <p>
         <button type="button" class="btn btn-primary insert">{{fa "plus"}} Add New</button>
 
@@ -24,7 +24,7 @@
 </template>
 
 <!--Action-->
-<template name="sample_orderAction">
+<template name="Sample_orderAction">
     {{#tabularAction}}
         <li><a href="#" class="update">{{fa "pencil"}} Update</a></li>
         <li><a href="#" class="remove">{{fa "remove"}} Remove</a></li>
@@ -33,12 +33,12 @@
 </template>
 
 <!--Insert-->
-<template name="sample_orderInsert">
-    {{#autoForm collection=Sample.Collection.Order id="sample_orderInsert" type="insert"}}
+<template name="Sample_orderInsert">
+    {{#autoForm collection=Sample.Collection.Order id="Sample_orderInsert" type="insert"}}
         <div class="row">
             <div class="col-md-8">
                 <!--Item Temporary-->
-                {{> sample_orderItem}}
+                {{> Sample_orderItem}}
 
                 <div class="pull-right">
                     <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -60,13 +60,13 @@
 </template>
 
 <!--Update-->
-<template name="sample_orderUpdate">
+<template name="Sample_orderUpdate">
     {{#if templateSubReady}}
-        {{#autoForm collection=Sample.Collection.Order doc=data id="sample_orderUpdate" type="update"}}
+        {{#autoForm collection=Sample.Collection.Order doc=data id="Sample_orderUpdate" type="update"}}
             <div class="row">
                 <div class="col-md-8">
                     <!--Item Temporary-->
-                    {{> sample_orderItem data.items}}
+                    {{> Sample_orderItem data.items}}
 
                     <div class="pull-right">
                         <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -91,7 +91,7 @@
 </template>
 
 <!--Show-->
-<template name="sample_orderShow">
+<template name="Sample_orderShow">
     {{#if templateSubReady}}
         {{#with data}}
             <dl class="dl-horizontal">

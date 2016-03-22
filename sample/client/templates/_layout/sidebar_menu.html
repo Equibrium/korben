@@ -1,0 +1,47 @@
+<template name="Sample_sidebarMenu">
+    <li class="{{isActiveRoute name='sample.home'}}">
+        <a href="{{pathFor 'sample.home'}}">
+            <i class="fa fa-home"></i> <span>Home</span>
+        </a>
+    </li>
+
+    <!--Data-->
+    {{#if isInRole 'data-insert,data-update,data-remove' 'Sample'}}
+        <li class="header">DATA</li>
+        <li class="{{isActiveRoute name='sample.customer'}}">
+            <a href="{{pathFor 'sample.customer'}}">
+                <i class="fa fa-users"></i> <span>Customer</span>
+            </a>
+        </li>
+    {{/if}}
+
+    <!--Report-->
+    {{#if isInRole 'report' 'Sample'}}
+        <li class="header">REPORT</li>
+        <li class="{{isActiveRoute name='sample.customerReport'}}">
+            <a href="{{pathFor 'sample.customerReport'}}">
+                <i class="fa fa-users"></i> <span>Customer (Browser View)</span>
+            </a>
+        </li>
+        <li class="{{isActiveRoute name='sample.customerExcelReport'}}">
+            <a href="{{pathFor 'sample.customerExcelReport'}}">
+                <i class="fa fa-users"></i> <span>Customer (Excel)</span>
+            </a>
+        </li>
+    {{/if}}
+
+    <!--Settings-->
+    {{#if isInRole 'setting' 'Sample'}}
+        <li class="header">SETTING</li>
+        <li class="{{isActiveRoute name='cpanel.exchange'}}">
+            <a href="{{pathFor 'cpanel.exchange'}}">
+                <i class="fa fa-exchange"></i> <span>Exchange</span>
+            </a>
+        </li>
+        <li class="{{isActiveRoute name='sample.location'}}">
+            <a href="{{pathFor 'sample.location'}}">
+                <i class="fa fa-map-marker"></i> <span>Location</span>
+            </a>
+        </li>
+    {{/if}}
+</template>

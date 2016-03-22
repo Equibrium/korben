@@ -1,5 +1,5 @@
 // Collection
-Sample.Collection.Customer = new Mongo.Collection("sample_customer");
+Sample.Collection.Customer = new Mongo.Collection("Sample_customer");
 
 // Schema
 Sample.Schema.Customer = new SimpleSchema({

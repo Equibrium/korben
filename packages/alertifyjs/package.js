@@ -1,6 +1,6 @@
 Package.describe({
     name: 'theara:alertifyjs',
-    version: '1.6.1',
+    version: '1.6.6',
     // Brief, one-line summary of the package.
     summary: 'A javascript framework for developing pretty browser dialogs and notifications',
     // URL to the Git repository containing the source code for this package.
@@ -15,12 +15,15 @@ Package.onUse(function (api) {
     api.use('ecmascript');
 
     api.addFiles('lib/css/alertify.css', 'client');
-    // api.addFiles('lib/css/themes/default.css', 'client');
-    api.addFiles('lib/css/themes/bootstrap.css', 'client');
+    api.addFiles('lib/css/themes/default.css', 'client');
+    // api.addFiles('lib/css/themes/bootstrap.css', 'client');
     api.addFiles('lib/alertify.js', 'client');
 
-    api.addFiles('alertifyjs.js');
-    api.export('alertify', 'client');
+    api.addFiles('alertifyjs.js', 'client');
+    api.export([
+        'alertify',
+        'createNewAlertify'
+    ], 'client');
 });
 
 Package.onTest(function (api) {

@@ -1,4 +1,4 @@
-{{#template name="cpanel_helpBranch"}}
+{{#template name="Cpanel_helpBranch"}}
 
 ## Branch
 

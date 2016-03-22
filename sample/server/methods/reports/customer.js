@@ -1,5 +1,5 @@
 Meteor.methods({
-    sample_customerReport: function (params) {
+    Sample_customerReport: function (params) {
         var data = {
             title: {},
             header: {},

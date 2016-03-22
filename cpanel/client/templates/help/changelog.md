@@ -1,4 +1,4 @@
-{{#template name="cpanel_helpChangelog"}}
+{{#template name="Cpanel_helpChangelog"}}
 
 ## Change Log
 

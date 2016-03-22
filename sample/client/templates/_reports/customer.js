@@ -1,14 +1,14 @@
 /**
  * Declare template
  */
-var formTpl = Template.sample_customerReport,
-    genTpl = Template.sample_customerReportGen;
+var formTpl = Template.Sample_customerReport,
+    genTpl = Template.Sample_customerReportGen;
 
 /**
  * Form Hooks
  */
 AutoForm.hooks({
-    sample_customerReport: {
+    Sample_customerReport: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             this.event.preventDefault();
 
@@ -53,7 +53,7 @@ genTpl.helpers({
 
         // Use Fetcher
         Fetcher.setDefault("data", false);
-        Fetcher.retrieve('data', 'sample_customerReport', q);
+        Fetcher.retrieve('data', 'Sample_customerReport', q);
 
         return Fetcher.get('data');
     }

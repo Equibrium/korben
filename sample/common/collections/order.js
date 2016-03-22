@@ -1,5 +1,5 @@
 // Collection
-Sample.Collection.Order = new Mongo.Collection("sample_order");
+Sample.Collection.Order = new Mongo.Collection("Sample_order");
 
 // Schema
 Sample.Schema.Order = new SimpleSchema({

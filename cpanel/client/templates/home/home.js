@@ -1,5 +1,5 @@
 // Declare template
-var indexTpl = Template.cpanel_home;
+var indexTpl = Template.Cpanel_home;
 
 indexTpl.onCreated(function () {
 });

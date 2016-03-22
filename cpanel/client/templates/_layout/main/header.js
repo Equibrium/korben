@@ -1,29 +1,21 @@
 /**
- * Helper
+ * Header
  */
-Template.headerLayout.helpers({
-    navbar: function () {
-        var currentModule = Session.get('currentModule');
-        var currentBranch = Session.get('currentBranch');
-        if (!Meteor.userId() || !currentModule || !currentBranch) {
-            return {show: false};
+Template._headerLayout.helpers({
+    moduleName: function () {
+        var module = Session.get('currentModule');
+        var branch = Session.get('currentBranch');
+        if (Meteor.userId() && !_.isUndefined(module) && !_.isUndefined(branch)) {
+            var moduleWord = s.words(module, ':');
+            return Module[moduleWord[0]].name;
         }
-        var bar = s.decapitalize(currentModule);
 
-        return {show: true, template: {left: bar + '_navbar', right: bar + '_navbarRight'}};
+        return 'Rabbit Tech';
     },
-    currentBranch: function () {
+    headerMenu: function () {
         var currentModule = Session.get('currentModule');
-        var currentBranch = Session.get('currentBranch');
-        var getBranch = Cpanel.Collection.Branch.findOne({_id: currentBranch});
-        var show = false;
+        // var menu = s.decapitalize(currentModule);
 
-        if (!currentModule || !currentBranch || !getBranch) {
-            return {show: show};
-        } else {
-            show = true;
-            var title = currentBranch + ' : ' + getBranch.enShortName;
-            return {show: show, title: title};
-        }
+        return `${currentModule}_headerMenu`;
     }
 });

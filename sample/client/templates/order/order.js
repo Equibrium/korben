@@ -1,12 +1,12 @@
 /**
  * Declare template
  */
-var indexTpl = Template.sample_order,
-    insertTpl = Template.sample_orderInsert,
-    updateTpl = Template.sample_orderUpdate,
-    showTpl = Template.sample_orderShow,
+var indexTpl = Template.Sample_order,
+    insertTpl = Template.Sample_orderInsert,
+    updateTpl = Template.Sample_orderUpdate,
+    showTpl = Template.Sample_orderShow,
 
-    customerShowTpl = Template.sample_customerShow;
+    customerShowTpl = Template.Sample_customerShow;
 
 /**
  * Index
@@ -18,7 +18,7 @@ indexTpl.onCreated(function () {
 
     // Subscription
     var customerId = FlowRouter.getParam('customerId');
-    this.subCustomer = this.subscribe('sample_customerById', customerId);
+    this.subCustomer = this.subscribe('Sample_customerById', customerId);
 });
 
 indexTpl.helpers({
@@ -81,7 +81,7 @@ insertTpl.helpers({
  * Update
  */
 updateTpl.onCreated(function () {
-    this.subscribe('sample_orderById', this.data._id);
+    this.subscribe('Sample_orderById', this.data._id);
 });
 
 updateTpl.onRendered(function () {
@@ -101,7 +101,7 @@ updateTpl.helpers({
  * Show
  */
 showTpl.onCreated(function () {
-    this.subscribe('sample_orderById', this.data._id);
+    this.subscribe('Sample_orderById', this.data._id);
 });
 
 showTpl.helpers({
@@ -115,7 +115,7 @@ showTpl.helpers({
 // Hook
 AutoForm.hooks({
     // Order
-    sample_orderInsert: {
+    Sample_orderInsert: {
         before: {
             insert: function (doc) {
                 doc.branchId = Session.get('currentBranch');
@@ -130,7 +130,7 @@ AutoForm.hooks({
             alertify.error(error.message);
         }
     },
-    sample_orderUpdate: {
+    Sample_orderUpdate: {
         docToForm: function (doc, ss) {
             doc.orderDate = moment(doc.orderDate).format('YYYY-MM-DD');
             return doc;

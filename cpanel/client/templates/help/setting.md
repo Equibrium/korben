@@ -1,4 +1,4 @@
-{{#template name="cpanel_helpSetting"}}
+{{#template name="Cpanel_helpSetting"}}
 
 ## Setting
 

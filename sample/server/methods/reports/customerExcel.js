@@ -1,5 +1,5 @@
 Meteor.methods({
-    sample_customerExcel: function (params) {
+    Sample_customerExcel: function (params) {
         var Future = Npm.require('fibers/future');
         var futureResponse = new Future();
 

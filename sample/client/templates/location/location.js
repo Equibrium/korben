@@ -1,121 +1,134 @@
 /**
- * Declare template
- */
-var indexTpl = Template.sample_location,
-    insertTpl = Template.sample_locationInsert,
-    updateTpl = Template.sample_locationUpdate,
-    showTpl = Template.sample_locationShow;
-
-/**
  * Index
  */
-indexTpl.onCreated(function () {
-    // Create new  alertify
-    createNewAlertify("location", {transition: 'zoom'});
-});
+class Sample_location extends BlazeComponent {
+    onCreated() {
+        // Create new  alertify
+        createNewAlertify("location");
+    }
 
-indexTpl.helpers({
-    selector: function () {
-        return {};
-    },
-    tabularClass: function () {
-        var self = this;
-        var cssClass = 'table table-striped table-bordered table-condensed table-hover';
+    // Helper
+    tabularClass() {
+        let self = this;
+        let cssClass = 'table table-striped table-bordered table-condensed table-hover';
         if (self.cssClass) {
             cssClass += '-' + this.cssClass;
         }
 
         return cssClass;
     }
-});
 
-indexTpl.events({
-    'click .js-insert': function (e, t) {
-        alertify.location(fa("plus", "Location"), renderTemplate(insertTpl));
-    },
-    'click .js-update': function (e, t) {
-        alertify.location(fa("pencil", "Location"), renderTemplate(updateTpl, this));
-    },
-    'click .js-remove': function (e, t) {
-        var self = this;
+    // Event
+    events() {
+        return [
+            {'click .js-create': this._onCreate},
+            {'click .js-update': this._onUpdate},
+            {'click .js-destroy': this._onDestroy},
+            {'click .js-display': this._onDisplay}
+        ]
+    }
 
-        alertify.confirm(
-            fa("remove", "Location"),
-            "Are you sure to delete [" + self._id + "]?",
-            function () {
-                Sample.Collection.Location.remove(self._id, function (error) {
-                    if (error) {
-                        alertify.error(error.message);
-                    } else {
-                        alertify.success("Success");
-                    }
-                });
-            },
-            null
+    _onCreate(e) {
+        alertify.location(fa("plus", "Location"), renderTemplate(Sample_locationNew.renderComponent()));
+    }
+
+    _onUpdate(e) {
+        let data = this.currentData();
+        alertify.location(fa("pencil", "Location"), renderTemplate(Sample_locationEdit.renderComponent(), data));
+    }
+
+    _onDestroy(e) {
+        let data = this.currentData();
+        destroyAction(
+            Sample.Collection.Location,
+            {_id: data._id},
+            {title: 'Location', item: data._id}
         );
-
-    },
-    'click .js-show': function (e, t) {
-        alertify.alert(fa("eye", "Location"), renderTemplate(showTpl, this).html);
     }
-});
+
+    _onDisplay(e) {
+        let data = this.currentData();
+        alertify.alert(fa("eye", "Location"), renderTemplate(Sample_locationShow.renderComponent(), data).html);
+    }
+}
+Sample_location.register('Sample_location');
 
 /**
- * Insert
+ * New
  */
+class Sample_locationNew extends BlazeComponent {
+
+}
+Sample_locationNew.register('Sample_locationNew');
 
 /**
- * Update
+ * Edit
  */
-updateTpl.onCreated(function () {
-    this.subLocation = this.subscribe('sample_locationById', this.data._id);
-});
-
-updateTpl.helpers({
-    data: function () {
-        var data = Sample.Collection.Location.findOne(this._id);
-        return data;
+class Sample_locationEdit extends BlazeComponent {
+    // On created
+    onCreated() {
+        let data = this.currentData();
+        this.autorun(()=> {
+            this.subscribe('Sample.location', {_id: data._id});
+        });
     }
-});
+
+    // Helper
+    data() {
+        let data, getLocation;
+        data = this.currentData();
+        getLocation = Sample.Collection.Location.findOne(data._id);
+
+        return getLocation;
+    }
+}
+Sample_locationEdit.register('Sample_locationEdit');
 
 /**
  * Show
  */
-showTpl.onCreated(function () {
-    this.subLocation = this.subscribe('sample_locationById', this.data._id);
-});
-
-showTpl.helpers({
-    data: function () {
-        var data = Sample.Collection.Location.findOne(this._id);
-        return data;
+class Sample_locationShow extends BlazeComponent {
+    // On created
+    onCreated() {
+        let data = this.currentData();
+        this.autorun(()=> {
+            this.subscribe('Sample_location', {_id: data._id});
+        });
     }
-});
+
+    // Helper
+    data() {
+        let data, getLocation;
+        data = this.currentData();
+        getLocation = Sample.Collection.Location.findOne(data._id);
+
+        return getLocation;
+    }
+}
+Sample_locationShow.register('Sample_locationShow');
 
 /**
  * Hook
  */
-AutoForm.hooks({
-    sample_locationInsert: {
-        before: {
-            insert: function (doc) {
-                return doc;
-            }
-        },
-        onSuccess: function (formType, result) {
-            alertify.success('Success');
-        },
-        onError: function (formType, error) {
-            alertify.error(error.message);
-        }
-    },
-    sample_locationUpdate: {
-        onSuccess: function (formType, result) {
+let hooksObject = {
+    onSuccess: function (formType, result) {
+        if (formType == 'update') {
             alertify.location().close();
-            alertify.success('Success');
-        },
-        onError: function (formType, error) {
-            alertify.error(error.message);
         }
+        Bert.alert({
+            message: 'Success',
+            type: 'success'
+        });
+    },
+    onError: function (formType, error) {
+        Bert.alert({
+            message: error.message,
+            type: 'danger'
+        });
     }
-});
+};
+
+AutoForm.addHooks([
+    'Sample_locationNew',
+    'Sample_locationEdit'
+], hooksObject);

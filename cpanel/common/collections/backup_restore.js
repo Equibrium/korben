@@ -16,11 +16,6 @@ Cpanel.Schema.Backup = new SimpleSchema({
             type: 'select2',
             options: function () {
                 return Cpanel.List.moduleForBackupRestore();
-            },
-            afFieldInput: {
-                select2Options: {
-                    theme: "bootstrap"
-                }
             }
         }
     },
@@ -28,24 +23,14 @@ Cpanel.Schema.Backup = new SimpleSchema({
         type: String,
         label: 'Type',
         autoform: {
-            type: 'select2',
-            afFieldInput: {
-                select2Options: {
-                    theme: "bootstrap"
-                }
-            }
+            type: 'select2'
         }
     },
     branch: {
         type: String,
         label: 'Branch',
         autoform: {
-            type: 'select2',
-            afFieldInput: {
-                select2Options: {
-                    theme: "bootstrap"
-                }
-            }
+            type: 'select2'
         }
     }
 });
@@ -65,11 +50,6 @@ Cpanel.Schema.Restore = new SimpleSchema({
             type: 'select2',
             options: function () {
                 return Cpanel.List.moduleForBackupRestore();
-            },
-            afFieldInput: {
-                select2Options: {
-                    theme: "bootstrap"
-                }
             }
         }
     },
@@ -77,24 +57,14 @@ Cpanel.Schema.Restore = new SimpleSchema({
         type: String,
         label: 'Type',
         autoform: {
-            type: 'select2',
-            afFieldInput: {
-                select2Options: {
-                    theme: "bootstrap"
-                }
-            }
+            type: 'select2'
         }
     },
     branch: {
         type: String,
         label: 'Branch',
         autoform: {
-            type: 'select2',
-            afFieldInput: {
-                select2Options: {
-                    theme: "bootstrap"
-                }
-            }
+            type: 'select2'
         }
     },
     restoreFile: {

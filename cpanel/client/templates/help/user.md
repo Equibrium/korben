@@ -1,4 +1,4 @@
-{{#template name="cpanel_helpUser"}}
+{{#template name="Cpanel_helpUser"}}
 
 ## User
 

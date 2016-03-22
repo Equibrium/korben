@@ -1,4 +1,4 @@
-{{#template name="sample_helpWelcome"}}
+{{#template name="Sample_helpWelcome"}}
 
 ## Welcome
 

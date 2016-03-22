@@ -1,5 +1,5 @@
 // Publication
-Meteor.publish('sample_orderByCustomer', function (customerId) {
+Meteor.publish('Sample_orderByCustomer', function (customerId) {
     this.unblock();
     if (this.userId) {
         check(customerId, String);
@@ -9,7 +9,7 @@ Meteor.publish('sample_orderByCustomer', function (customerId) {
     this.ready();
 });
 
-Meteor.publish('sample_orderById', function (id) {
+Meteor.publish('Sample_orderById', function (id) {
     this.unblock();
     if (this.userId) {
         check(id, String);

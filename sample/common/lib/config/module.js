@@ -4,7 +4,7 @@ Meteor.isClient && Template.registerHelper('Module', Module);
 
 Module.Sample = {
     name: 'Sample System',
-    version: '0.0.1',
+    version: '1.0.0',
     summary: 'Sample Management System is ...',
     roles: [
         'setting',

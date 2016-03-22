@@ -1,5 +1,5 @@
 //// Easy search
-//EasySearch.createSearchIndex('sample_customerSearch', {
+//EasySearch.createSearchIndex('Sample_customerSearch', {
 //    collection: Sample.Collection.Customer, // instanceof Meteor.Collection
 //    field: ['_id', 'name', 'telephone'], // array of fields to be searchable
 //    //transform: function (doc) { // Support elastic-search only

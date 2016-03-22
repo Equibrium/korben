@@ -1,10 +1,10 @@
 ///**
 // * Declare template
 // */
-//var indexTpl = Template.sample_customerSearch,
-//    listTpl = Template.sample_customerSearchList,
+//var indexTpl = Template.Sample_customerSearch,
+//    listTpl = Template.Sample_customerSearchList,
 //
-//    customerAddonTpl = Template.sample_addressInsert;
+//    customerAddonTpl = Template.Sample_addressInsert;
 //
 ///**
 // * Index
@@ -20,22 +20,22 @@
 //    },
 //    'change .filter-select': function (e) {
 //        var instance = EasySearch.getComponentInstance({
-//            index: 'sample_customerSearch'
+//            index: 'Sample_customerSearch'
 //        });
 //
-//        EasySearch.changeProperty('sample_customerSearch', 'filteredGender', $(e.target).val());
-//        EasySearch.changeLimit('sample_customerSearch', 10);
+//        EasySearch.changeProperty('Sample_customerSearch', 'filteredGender', $(e.target).val());
+//        EasySearch.changeLimit('Sample_customerSearch', 10);
 //
 //        instance.paginate(1);
 //        instance.triggerSearch();
 //    },
 //    'change .sort-select': function (e) {
 //        var instance = EasySearch.getComponentInstance({
-//            index: 'sample_customerSearch'
+//            index: 'Sample_customerSearch'
 //        });
 //
-//        EasySearch.changeProperty('sample_customerSearch', 'sortBy', $(e.target).val());
-//        EasySearch.changeLimit('sample_customerSearch', 10);
+//        EasySearch.changeProperty('Sample_customerSearch', 'sortBy', $(e.target).val());
+//        EasySearch.changeLimit('Sample_customerSearch', 10);
 //
 //        instance.paginate(1);
 //        instance.triggerSearch();

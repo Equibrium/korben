@@ -23,3 +23,7 @@
 //         module: module
 //     });
 // });
+
+Cpanel.Collection.Branch.before.insert(function (userId, doc) {
+    doc._id = idGenerator.gen(Cpanel.Collection.Branch, 3);
+});

@@ -1,59 +1,47 @@
-<template name="cpanel_welcome">
-    <!--Server date time-->
-    <h3 class="text-center">
-        <span class="label label-{{serverDateTime.css}}">
-            <i class="fa fa-calendar"></i> {{serverDateTime.val}}
-        </span>
-    </h3>
-
+<template name="CpanelWelcome">
     {{#if currentUser}}
         {{#if role}}
-            {{> cpanel_welcomeConfig}}
+            {{> CpanelWelcomeConfig}}
         {{else}}
-            {{> cpanel_welcomeAccessDenied}}
+            {{> CpanelWelcomeAccessDenied}}
         {{/if}}
     {{else}}
-        {{> cpanel_welcomeInfo}}
+        {{> CpanelWelcomeLogin}}
     {{/if}}
 </template>
 
-<template name="cpanel_welcomeInfo">
-    <div class="jumbotron">
+<!--Login-->
+<template name="CpanelWelcomeLogin">
+    {{#autoForm schema=Cpanel.Schema.WelcomeLogin id="CpanelWelcomeLogin"}}
+        <div class="form-group has-feedback{{#if afFieldIsInvalid name="username"}} has-error{{/if}}">
+            {{> afFieldInput name="username" placeholder="Username"}}
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            {{#if afFieldIsInvalid name="username"}}
+                <span class="help-block">{{afFieldMessage name="username"}}</span>
+            {{/if}}
+        </div>
 
-        <h1>
-            <!--<img alt="Rabbit Logo" src="/rabbit.png" style="float:left; width: 100px; height: 100px">-->
-            Rabbit Technology
-        </h1>
+        <div class="form-group has-feedback{{#if afFieldIsInvalid name="password"}} has-error{{/if}}">
+            {{> afFieldInput  type="password" name="password" placeholder="Password"}}
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            {{#if afFieldIsInvalid name="password"}}
+                <span class="help-block">{{afFieldMessage name="password"}}</span>
+            {{/if}}
+        </div>
 
-        <h3>
-            <div class="row">
-                <div class="col-md-6">
-                    <ul style="list-style-type:square">
-                        <li>Computer Training</li>
-                        <li>Application Development</li>
-                        <li>Web Design & Hosting Service</li>
-                        <li>IT Consultancy</li>
-                        <li>Network</li>
-                        <li>Software & Hardware Maintenance</li>
-                    </ul>
-                </div>
-                <div class="col-md-6">
-                    <ul style="list-style-type:square">
-                        <li>Loan Management System</li>
-                        <li>Saving Management System</li>
-                        <li>Accounting Management System</li>
-                        <li>School Management System</li>
-                        <li>Hospital Management System</li>
-                        <li>Ice Factory Management System</li>
-                    </ul>
-                </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <button type="submit" class="btn btn-primary btn-block btn-flat">
+                    <span class="glyphicon glyphicon-log-in"></span> Sign In
+                </button>
             </div>
-        </h3>
-
-    </div>
+        </div>
+    {{/autoForm}}
 </template>
 
-<template name="cpanel_welcomeAccessDenied">
+
+<!--Access Denied-->
+<template name="CpanelWelcomeAccessDenied">
     <div class="alert alert-danger" role="alert">
         <h2>[403]</h2>
 
@@ -63,24 +51,34 @@
     </div>
 </template>
 
-<template name="cpanel_welcomeConfig">
-    {{#if isSubReady  "cpanel_branch"}}
-        {{#autoForm schema=Cpanel.Schema.WelcomeConfig id="cpanel_welcomeConfig" type="normal"}}
+<!--Config-->
+<template name="CpanelWelcomeConfig">
+    {{#if templateSubsReady}}
+        {{#autoForm schema=Cpanel.Schema.WelcomeConfig id="CpanelWelcomeConfig" type="normal"}}
             <div class="row">
-                <div class="col-xs-6">
-                    {{> afQuickField name="module" value=value.module}}
-                </div>
-                <div class="col-xs-6">
-                    {{> afQuickField name="branch" value=value.branch}}
+                <div class="col-xs-12">
+                    {{> afQuickField name="module"}}
+                    {{> afQuickField name="branch"}}
                 </div>
             </div>
 
-            {{#formFooter}}
-                <button type="submit" class="btn btn-primary">{{fa "angle-double-right"}} Go</button>
-            {{/formFooter}}
+            <div class="row">
+                <div class="col-xs-6">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">
+                        <i class="fa fa-angle-double-right"></i> Go
+                    </button>
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-danger btn-block btn-flat js-sign-out">
+                        <span class="glyphicon glyphicon-log-out"></span> Sign Out
+                    </button>
+                </div>
+            </div>
         {{/autoForm}}
 
     {{else}}
-        {{> loading}}
+        <div class="text-center">
+            {{> iconLoading}}
+        </div>
     {{/if}}
 </template>

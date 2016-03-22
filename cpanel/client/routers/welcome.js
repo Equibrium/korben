@@ -2,12 +2,13 @@ FlowRouter.route('/', {
     name: 'cpanel.welcome',
     title: 'Welcome',
     action: function (params, queryParams) {
-        Layout.main('cpanel_welcome');
+        Layout.login('CpanelWelcome');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: 'Welcome'
+        title: 'Welcome',
+        icon: 'dashboard'
         //parent: 'cpanel.welcome'
     }
 });

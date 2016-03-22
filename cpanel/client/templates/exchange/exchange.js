@@ -1,57 +1,39 @@
 // Declare template
-var indexTpl = Template.cpanel_exchange,
-    insertTpl = Template.cpanel_exchangeInsert,
-    updateTpl = Template.cpanel_exchangeUpdate,
-    showTpl = Template.cpanel_exchangeShow;
+let indexTpl = Template.Cpanel_exchange,
+    newTpl = Template.Cpanel_exchangeNew,
+    editTpl = Template.Cpanel_exchangeEdit,
+    showTpl = Template.Cpanel_exchangeShow;
 
 // Index
 indexTpl.onCreated(function () {
-});
-
-indexTpl.onRendered(function () {
     // Create new  alertify
     createNewAlertify("exchange", {size: 'lg'});
 });
 
 indexTpl.events({
-    'click .insert': function (e, t) {
-        alertify.exchange(fa("plus", "Exchange"), renderTemplate(insertTpl));
+    'click .js-create': function (e, t) {
+        alertify.exchange(fa("plus", "Exchange"), renderTemplate(newTpl));
     },
-    'click .update': function (e, t) {
-        alertify.exchange(fa("pencil", "Exchange"), renderTemplate(updateTpl, this));
+    'click .js-update': function (e, t) {
+        alertify.exchange(fa("pencil", "Exchange"), renderTemplate(editTpl, this));
     },
-    'click .remove': function (e, t) {
-        var id = this._id;
-
-        alertify.confirm(
-            fa("remove", "Exchange"),
-            "Are you sure to delete [" + this.dateTime + "]?",
-            function () {
-
-                Cpanel.Collection.Exchange.remove(id, function (error) {
-                    if (error) {
-                        alertify.error(error.message);
-                    } else {
-                        alertify.success("Success");
-                    }
-                });
-            },
-            null);
+    'click .js-destroy': function (e, t) {
+        destroyAction(
+            Cpanel.Collection.Exchange,
+            {_id: this._id},
+            {title: 'Exchange', item: moment(self.exDate).format('DD/MM/YYYY')}
+        );
     },
-    'click .show': function (e, t) {
-        this.ratesVal = JSON.stringify(this.rates);
+    'click .js-display': function (e, t) {
         alertify.alert(fa("eye", "Exchange"), renderTemplate(showTpl, this).html);
     }
 });
 
-// Insert
-insertTpl.onRendered(function () {
-});
-
-insertTpl.helpers({
+// New
+newTpl.helpers({
     doc: function () {
-        var khr = 0, usd = 0, thb = 0;
-        var baseCurrency = Cpanel.Collection.Setting.findOne().baseCurrency;
+        let khr = 0, usd = 0, thb = 0;
+        let baseCurrency = Cpanel.Collection.Setting.findOne().baseCurrency;
 
         if (baseCurrency == 'KHR') {
             khr = 1;
@@ -65,39 +47,67 @@ insertTpl.helpers({
     }
 });
 
-// Update
-updateTpl.onCreated(function () {
-    this.subscribe('cpanel_exchangeById', this.data._id);
+// Edit
+editTpl.onCreated(function () {
+    let self = this;
+    self.autorun(function () {
+        self.subscribe('Cpanel.exchange', {_id: self.data._id});
+    });
 });
 
-updateTpl.onRendered(function () {
-});
-
-updateTpl.helpers({
+editTpl.helpers({
     data: function () {
-        var data = Cpanel.Collection.Exchange.findOne(this._id);
+        let data = Cpanel.Collection.Exchange.findOne(this._id);
+        return data;
+    }
+});
+
+// Show
+showTpl.onCreated(function () {
+    let self = this;
+    self.autorun(function () {
+        self.subscribe('Cpanel.exchange', {_id: self.data._id});
+    });
+});
+
+showTpl.helpers({
+    data: function () {
+        let data = Cpanel.Collection.Exchange.findOne(this._id);
+        data.ratesVal = JSON.stringify(data.rates);
         return data;
     }
 });
 
 // Hook
 AutoForm.hooks({
-    cpanel_exchangeInsert: {
+    Cpanel_exchangeNew: {
         onSuccess: function (formType, result) {
             alertify.exchange().close();
-            alertify.success('Success');
+            Bert.alert({
+                message: 'Success',
+                type: 'success'
+            });
         },
         onError: function (formType, error) {
-            alertify.error(error.message);
+            Bert.alert({
+                message: error.message,
+                type: 'danger'
+            });
         }
     },
-    cpanel_exchangeUpdate: {
+    Cpanel_exchangeEdit: {
         onSuccess: function (formType, error) {
             alertify.exchange().close();
-            alertify.success('Success');
+            Bert.alert({
+                message: 'Success',
+                type: 'success'
+            });
         },
         onError: function (formType, error) {
-            alertify.error(error.message);
+            Bert.alert({
+                message: error.message,
+                type: 'danger'
+            });
         }
     }
 });

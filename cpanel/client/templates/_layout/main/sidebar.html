@@ -1,0 +1,29 @@
+<template name="_sidebarLayout">
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- search form -->
+            {{> _sidebarForm}}
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu">
+                {{> Template.dynamic template=sidebarMenu}}
+                {{> Cpanel_sidebarMenuTool}}
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+</template>
+
+<!--Sidebar for branch office-->
+<template name="_sidebarForm">
+    {{#if templateSubsReady}}
+        {{#autoForm schema=Cpanel.Schema.SidebarBranch id="_sidebarForm" class="sidebar-form"}}
+            {{> afFieldInput name="branch"}}
+        {{/autoForm}}
+    {{else}}
+        <div class="text-center text-gray">
+            {{> iconLoading}}
+        </div>
+    {{/if}}
+</template>

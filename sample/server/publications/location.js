@@ -1,16 +1,19 @@
 // Publication
-//Meteor.publish('sample_location', function () {
-//    this.unblock();
-//    if (this.userId) {
-//
-//        return Sample.Collection.Location.find({});
-//        //return Sample.Collection.Location.find({}, {removed: true}); // for soft remove
-//    }
-//
-//    this.ready();
-//});
+Meteor.publish('Sample.location', function (selector = {}, options = {}) {
+    this.unblock();
+    if (this.userId) {
+        check(selector, Object);
+        check(options, Object);
 
-Meteor.publish('sample_locationById', function (id) {
+        let data = Sample.Collection.Location.find(selector, options);
+
+        return data;
+    }
+
+    this.ready();
+});
+
+Meteor.publish('Sample_locationById', function (id) {
     this.unblock();
     if (this.userId) {
         check(id, String);

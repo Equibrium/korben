@@ -1,11 +1,11 @@
 /**
  * Browser view
  */
-sampleRoutes.route('/customerReport', {
+SampleRoutes.route('/customerReport', {
     name: 'sample.customerReport',
     title: "Customer Report",
     action: function (params, queryParams) {
-        Layout.main('sample_customerReport');
+        Layout.main('Sample_customerReport');
     },
     breadcrumb: {
         //params: ['id'],
@@ -15,21 +15,21 @@ sampleRoutes.route('/customerReport', {
     }
 });
 
-sampleRoutes.route('/customerReportGen', {
+SampleRoutes.route('/customerReportGen', {
     name: 'sample.customerReportGen',
     title: "Customer Report",
     action: function (params, queryParams) {
-        Layout.report('sample_customerReportGen');
+        Layout.report('Sample_customerReportGen');
     }
 });
 
 /**
  * Excel
  */
-sampleRoutes.route('/customerExcelReport', {
+SampleRoutes.route('/customerExcelReport', {
     name: 'sample.customerExcelReport',
     action: function (params, queryParams) {
-        Layout.main('sample_customerExcelReport');
+        Layout.main('Sample_customerExcelReport');
     },
     breadcrumb: {
         //params: ['id'],

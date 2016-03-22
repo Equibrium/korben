@@ -1,6 +1,11 @@
 /* Setting */
-Meteor.publish('cpanel_setting', function () {
+Meteor.publish('Cpanel.setting', function () {
+    this.unblock();
     if (this.userId) {
-        return Cpanel.Collection.Setting.find();
+        let data = Cpanel.Collection.Setting.find();
+        return data;
     }
+
+    this.ready();
 });
+

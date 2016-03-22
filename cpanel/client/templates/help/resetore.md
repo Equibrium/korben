@@ -1,4 +1,4 @@
-{{#template name="cpanel_helpRestore"}}
+{{#template name="Cpanel_helpRestore"}}
 
 ## Restore
 

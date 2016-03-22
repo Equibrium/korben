@@ -2,12 +2,13 @@ cpanelRoutes.route('/user', {
     name: 'cpanel.user',
     title: 'User',
     action: function (params, queryParams) {
-        Layout.main('cpanel_user');
+        Layout.main('Cpanel_user');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: 'User',
+        icon: 'user',
         parent: 'cpanel.welcome'
     }
 });

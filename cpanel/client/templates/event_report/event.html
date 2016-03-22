@@ -1,7 +1,7 @@
 <!--Form-->
-<template name="cpanel_eventReport">
+<template name="Cpanel_eventReport">
     {{#if isSubReady}}
-        {{#autoForm schema=Cpanel.Schema.EventReport id="cpanel_eventReport"}}
+        {{#autoForm schema=Cpanel.Schema.EventReport id="Cpanel_eventReport"}}
             <div class="row">
                 <div class="col-md-6">
                     {{> afQuickField name='user'}}
@@ -24,7 +24,7 @@
 
 
 <!--Generate-->
-<template name="cpanel_eventReportGen">
+<template name="Cpanel_eventReportGen">
     {{#if data}}
         {{#reportTpl options}}
 

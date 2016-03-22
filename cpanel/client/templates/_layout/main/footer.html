@@ -1,15 +1,10 @@
-<template name="footerLayout">
-    <!-- footer -->
-    <footer class="footer">
-        <div class="container">
-            <p class="text-muted">
-                <img style="display: inline-block" alt="Rabbit TC" width="20" height="20" src="/rabbit.png">
-                Rabbit Training Center
-                <i class="fa fa-copyright"></i> 2015,
-                <i class="fa fa-phone-square"></i> 053 50 66 777.
-            </p>
+<template name="_footerLayout">
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> {{_footerLayoutInfo.version}}
         </div>
+        <strong>&copy; {{_footerLayoutInfo.copyright}} <a href="http://{{_footerLayoutInfo.website}}">{{_footerLayoutInfo.company}}</a>.</strong>
+        &#9990; {{_footerLayoutInfo.tel}}
     </footer>
-    <!-- /footer -->
 </template>
 

@@ -7,10 +7,15 @@ var state = new ReactiveObj({
     branch: ''
 });
 
-Template.cpanel_backup.onCreated(function () {
+Template.Cpanel_backup.onCreated(function () {
+    let self = this;
+    let rolesBranch = Meteor.user().rolesBranch;
+    self.autorun(function () {
+        self.subscribe('Cpanel.branch', {_id: {$in: rolesBranch}});
+    });
 });
 
-Template.cpanel_backup.helpers({
+Template.Cpanel_backup.helpers({
     type: function () {
         let module = state.get('module');
         return Cpanel.List.typeForBackupRestore(module);
@@ -21,7 +26,7 @@ Template.cpanel_backup.helpers({
     }
 });
 
-Template.cpanel_backup.events({
+Template.Cpanel_backup.events({
     'change [name="module"]': function (e, t) {
         let module = $(e.currentTarget).val();
         state.set('module', module);
@@ -34,7 +39,7 @@ Template.cpanel_backup.events({
 
 // Hook
 AutoForm.hooks({
-    cpanel_backup: {
+    Cpanel_backup: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             this.event.preventDefault();
 
@@ -83,10 +88,15 @@ AutoForm.hooks({
  */
 var restoreWaiting = new ReactiveVar(false);
 
-Template.cpanel_restore.onCreated(function () {
+Template.Cpanel_restore.onCreated(function () {
+    let self = this;
+    let rolesBranch = Meteor.user().rolesBranch;
+    self.autorun(function () {
+        self.subscribe('Cpanel.branch', {_id: {$in: rolesBranch}});
+    });
 });
 
-Template.cpanel_restore.helpers({
+Template.Cpanel_restore.helpers({
     restoreWaiting: function () {
         return restoreWaiting.get();
     },
@@ -140,7 +150,7 @@ Template.cpanel_restore.helpers({
     }
 });
 
-Template.cpanel_restore.events({
+Template.Cpanel_restore.events({
     'change [name="module"]': function (e, t) {
         let module = $(e.currentTarget).val();
         state.set('module', module);
@@ -157,14 +167,14 @@ Template.cpanel_restore.events({
 
 // Hook
 AutoForm.hooks({
-    cpanel_restore: {
+    Cpanel_restore: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             var self = this;
             self.event.preventDefault();
             restoreWaiting.set(true);
 
             var formData, $form;
-            $form = $('#cpanel_restore');
+            $form = $('#Cpanel_restore');
             formData = new FormData($form[0]);
 
             var restoreFile = insertDoc.restoreFile;

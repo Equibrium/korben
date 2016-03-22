@@ -1,8 +1,12 @@
 // Declare template
-var indexTpl = Template.cpanel_setting;
+var indexTpl = Template.Cpanel_setting;
 
 // Index
 indexTpl.onCreated(function () {
+    let self = this;
+    self.autorun(function () {
+        self.subscribe('Cpanel.branch', {});
+    });
 });
 
 indexTpl.helpers({
@@ -13,12 +17,18 @@ indexTpl.helpers({
 
 // Hook
 AutoForm.hooks({
-    cpanel_setting: {
+    Cpanel_setting: {
         onSuccess: function (formType, result) {
-            alertify.success('Success');
+            Bert.alert({
+                message: 'Success',
+                type: 'success'
+            });
         },
         onError: function (formType, error) {
-            alertify.error(error.message);
+            Bert.alert({
+                message: error.message,
+                type: 'danger'
+            });
         }
     }
 });

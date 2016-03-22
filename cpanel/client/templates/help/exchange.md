@@ -1,4 +1,4 @@
-{{#template name="cpanel_helpExchange"}}
+{{#template name="Cpanel_helpExchange"}}
 
 ## Exchange
 

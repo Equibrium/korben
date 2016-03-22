@@ -1,7 +1,7 @@
 /**
  * Setting
  */
-Security.defineMethod("sample_ifSetting", {
+Security.defineMethod("Sample_ifSetting", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
@@ -12,7 +12,7 @@ Security.defineMethod("sample_ifSetting", {
 /**
  * Data Entry
  */
-Security.defineMethod("sample_ifDataInsert", {
+Security.defineMethod("Sample_ifDataInsert", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
@@ -20,7 +20,7 @@ Security.defineMethod("sample_ifDataInsert", {
     }
 });
 
-Security.defineMethod("sample_ifDataUpdate", {
+Security.defineMethod("Sample_ifDataUpdate", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
@@ -28,7 +28,7 @@ Security.defineMethod("sample_ifDataUpdate", {
     }
 });
 
-Security.defineMethod("sample_ifDataRemove", {
+Security.defineMethod("Sample_ifDataRemove", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
@@ -39,7 +39,7 @@ Security.defineMethod("sample_ifDataRemove", {
 /**
  * Report
  */
-Security.defineMethod("sample_ifReport", {
+Security.defineMethod("Sample_ifReport", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {

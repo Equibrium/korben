@@ -37,9 +37,10 @@ fourseven:scss
 twbs:bootstrap
 fortawesome:fontawesome
 #fezvrasta:bootstrap-material-design
+theara:admin-lte
 
 ### User ###
-ian:accounts-ui-bootstrap-3
+#ian:accounts-ui-bootstrap-3
 ongoworks:security
 alanning:roles
 #mizzao:user-status
@@ -107,6 +108,7 @@ aldeed:autoform-bs-datetimepicker
 #baysao:autoform-bs-daterangepicker
 dburles:spacebars-tohtml
 raix:handlebar-helpers
+#ostrio:templatehelpers
 mpowaga:autoform-summernote
 #netanelgilad:bootstrap-material-datepicker
 comerc:bs-typeahead
@@ -127,6 +129,14 @@ miro:json2html
 theara:alertifyjs
 czbaker:lightbox2
 themeteorchef:bert
+juliancwirko:s-alert
+juliancwirko:s-alert-scale
+juliancwirko:s-alert-slide
+juliancwirko:s-alert-genie
+juliancwirko:s-alert-jelly
+juliancwirko:s-alert-flip
+juliancwirko:s-alert-bouncyflip
+juliancwirko:s-alert-stackslide
 
 ### File ###
 cfs:standard-packages
@@ -139,6 +149,7 @@ ostrio:meteor-root
 xamfoo:reactive-obj
 manuel:reactivearray
 frozeman:template-var
+peerlibrary:reactive-field
 
 ### Excel ###
 netanelgilad:node-uuid
@@ -166,7 +177,7 @@ rzymek:fullcalendar
 simple:markdown-templating
 
 ### Local ###
-theara:select2
+#theara:select2
 theara:collection-cache
 theara:id-generator
 theara:relation-exist
@@ -183,9 +194,10 @@ theara:numeral-helpers
 theara:factory
 theara:app-dump
 #theara:autoform-file
-theara:scrollup
+#theara:scrollup
 #theara:autoform-bs-md-datetimepicker
 theara:inputmask
 theara:autoform-inputmask
 #theara:autoform-bs-datetimepicker
 theara:autoform-bs-daterangepicker
+#theara:particles

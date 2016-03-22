@@ -1,12 +1,9 @@
 // Declare template
-var indexTpl = Template.cpanel_company,
-    updateTpl = Template.cpanel_companyUpdate;
+var indexTpl = Template.Cpanel_company,
+    editTpl = Template.Cpanel_companyEdit;
 
 // Index
 indexTpl.onCreated(function () {
-});
-
-indexTpl.onRendered(function () {
     // Create new  alertify
     createNewAlertify("company", {size: 'lg'});
 });
@@ -18,16 +15,22 @@ indexTpl.helpers({
 });
 
 indexTpl.events({
-    'click .update': function (e, t) {
-        var data = Cpanel.Collection.Company.findOne();
+    'click .js-update': function (e, t) {
+        alertify.company(fa("pencil", "Company"), renderTemplate(editTpl, this));
+    }
+});
 
-        alertify.company(fa("pencil", "Company"), renderTemplate(updateTpl, data));
+// Edit
+editTpl.helpers({
+    data: function () {
+        let data = Cpanel.Collection.Company.findOne(this._id);
+        return data;
     }
 });
 
 // Hook
 AutoForm.hooks({
-    cpanel_companyUpdate: {
+    Cpanel_companyEdit: {
         onSuccess: function (formType, result) {
             alertify.company().close();
             alertify.success('Success');

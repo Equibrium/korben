@@ -1,6 +1,6 @@
 // Declare template
-var formTpl = Template.cpanel_eventReport,
-    genTpl = Template.cpanel_eventReportGen;
+var formTpl = Template.Cpanel_eventReport,
+    genTpl = Template.Cpanel_eventReportGen;
 
 // Form
 formTpl.onCreated(function () {
@@ -11,7 +11,7 @@ formTpl.onRendered(function () {
 
 // Hook
 AutoForm.hooks({
-    cpanel_eventReport: {
+    Cpanel_eventReport: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             this.event.preventDefault();
 

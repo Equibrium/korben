@@ -1,16 +1,17 @@
-/* Exchange */
-Meteor.publish('cpanel_exchange', function () {
+/**
+ * Exchange
+ */
+Meteor.publish('Cpanel.exchange', function (selector = {}, options = {}) {
     this.unblock();
     if (this.userId) {
-        return Cpanel.Collection.Exchange.find();
+        check(selector, Object);
+        check(options, Object);
+
+        let data = Cpanel.Collection.Exchange.find(selector, options);
+
+        return data;
     }
+
     this.ready();
 });
 
-Meteor.publish('cpanel_exchangeById', function (id) {
-    this.unblock();
-    if (this.userId) {
-        return Cpanel.Collection.Exchange.find({_id: id});
-    }
-    this.ready();
-});

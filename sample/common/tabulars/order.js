@@ -1,6 +1,6 @@
 // Order
 Sample.TabularTable.Order = new Tabular.Table({
-    name: "sample_orderList",
+    name: "Sample_orderList",
     collection: Sample.Collection.Order,
     pagingType: "full_numbers",
     autoWidth: false,
@@ -9,7 +9,7 @@ Sample.TabularTable.Order = new Tabular.Table({
     ],
     order: [['1', 'desc']],
     columns: [
-        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.sample_orderAction},
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Sample_orderAction},
         {data: "_id", title: "ID"},
         {
             data: "orderDate",

@@ -61,11 +61,28 @@ Cpanel.List = {
         var list = [];
         list.push({label: "(Select One)", value: ""});
 
+        var rolesBranch = Meteor.users.findOne(userIdVal).rolesBranch;
+        if (rolesBranch) {
+            var branches = Cpanel.Collection.Branch.find({_id: {$in: rolesBranch}}, {sort: {_id: 1}});
+            branches.forEach(function (branch) {
+                list.push({label: branch.enName, value: branch._id});
+            });
+        }
+
+        return list;
+    },
+    branchForUserOnSidebar: function (userId) {
+        var userIdVal = _.isUndefined(userId) ? Meteor.userId() : userId;
+        var list = [];
+        // list.push({label: "(Select One)", value: ""});
+
         var getUser = Meteor.users.findOne(userIdVal);
         if (getUser) {
             _.each(getUser.rolesBranch, function (branch) {
                 var label = Cpanel.Collection.Branch.findOne(branch);
-                list.push({label: label.enName, value: branch});
+                if (label.enName) {
+                    list.push({label: label.enName, value: branch});
+                }
             });
         }
 

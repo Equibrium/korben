@@ -1,5 +1,5 @@
 // Publication
-//Meteor.publish('sample_customer', function (branchId) {
+//Meteor.publish('Sample_customer', function (branchId) {
 //    this.unblock();
 //    if (this.userId) {
 //        var selector = {};
@@ -13,7 +13,7 @@
 //    this.ready();
 //});
 
-Meteor.publish('sample_customerById', function (id) {
+Meteor.publish('Sample_customerById', function (id) {
     this.unblock();
     if (this.userId) {
         check(id, String);

@@ -1,4 +1,4 @@
-{{#template name="cpanel_helpBackup"}}
+{{#template name="Cpanel_helpBackup"}}
 
 ## Backup
 

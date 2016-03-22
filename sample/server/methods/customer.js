@@ -1,5 +1,5 @@
 Meteor.methods({
-    sample_customerById: function (id) {
+    Sample_customerById: function (id) {
         var data = Sample.Collection.Customer.findOne(id);
         data.photoUrl = null;
 

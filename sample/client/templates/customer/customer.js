@@ -1,12 +1,12 @@
 /**
  * Declare template
  */
-var indexTpl = Template.sample_customer,
-    insertTpl = Template.sample_customerInsert,
-    updateTpl = Template.sample_customerUpdate,
-    showTpl = Template.sample_customerShow,
+var indexTpl = Template.Sample_customer,
+    insertTpl = Template.Sample_customerInsert,
+    updateTpl = Template.Sample_customerUpdate,
+    showTpl = Template.Sample_customerShow,
 
-    locationAddOnTpl = Template.sample_locationAddOnCustomer;
+    locationAddOnTpl = Template.Sample_locationAddOnCustomer;
 
 /**
  * State
@@ -104,7 +104,7 @@ insertTpl.onDestroyed(function () {
  * Update
  */
 updateTpl.onCreated(function () {
-    this.subscribe('sample_customerById', this.data._id);
+    this.subscribe('Sample_customerById', this.data._id);
     state.set('location', {
         _id: this.data.locationId,
         name: this.data._location.name
@@ -141,7 +141,7 @@ updateTpl.onDestroyed(function () {
  * Show
  */
 showTpl.onCreated(function () {
-    this.subscribe('sample_customerById', this.data._id);
+    this.subscribe('Sample_customerById', this.data._id);
 });
 
 showTpl.helpers({
@@ -177,7 +177,7 @@ locationAddOnTpl.events({
  */
 AutoForm.hooks({
     // Customer
-    sample_customerInsert: {
+    Sample_customerInsert: {
         before: {
             insert: function (doc) {
                 doc.branchId = Session.get('currentBranch');
@@ -191,7 +191,7 @@ AutoForm.hooks({
             alertify.error(error.message);
         }
     },
-    sample_customerUpdate: {
+    Sample_customerUpdate: {
         onSuccess: function (formType, result) {
             alertify.customer().close();
             alertify.success('Success');

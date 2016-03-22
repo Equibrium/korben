@@ -1,69 +1,102 @@
-// Declare template
-var indexTpl = Template.cpanel_welcome,
-    configTpl = Template.cpanel_welcomeConfig;
-
-// Declare state for server date time
-var state = new ReactiveObj();
-
-// Index
-indexTpl.onCreated(function () {
-});
-
-indexTpl.helpers({
-    role: function () {
-        var role = Roles.getGroupsForUser(Meteor.userId());
+/**
+ * Index
+ */
+class CpanelWelcome extends BlazeComponent {
+    role() {
+        let role = Roles.getGroupsForUser(Meteor.userId());
         if (role.length > 0) {
             return true;
         }
 
         return false;
-    },
-    serverDateTime: function () {
-        Meteor.setInterval(function () {
-            Meteor.call('currentDate', function (error, result) {
-                var dateTime = moment(result, 'YYYY-MM-DD H:mm:ss');
-                var cssClass = 'info';
-                if (dateTime.day() == 0 || dateTime.day() == 6) {
-                    cssClass = 'warning';
+    }
+}
+
+CpanelWelcome.register('CpanelWelcome');
+
+/**
+ * Login
+ */
+class CpanelWelcomeLogin extends BlazeComponent {
+    onCreated() {
+        // AutoForm hook
+        AutoForm.hooks({
+            CpanelWelcomeLogin: {
+                onSubmit: function (insertDoc, updateDoc, currentDoc) {
+                    this.event.preventDefault();
+                    this.done(null, insertDoc);
+                },
+                onSuccess: function (formType, result) {
+                    Meteor.loginWithPassword(result.username, result.password, (error)=> {
+                        if (error) {
+                            Bert.alert({
+                                // title: 'Error',
+                                message: error.message,
+                                type: 'danger'
+                            });
+                        }else {
+                            Bert.alert({
+                                // title: 'Success',
+                                message: 'You are sign in',
+                                type: 'success'
+                            });
+                        }
+                    });
+                },
+                onError: function (formType, error) {
+                    Bert.alert({
+                        // title: 'Error',
+                        message: error.message,
+                        type: 'danger'
+                    });
                 }
-                var dateTimeVal = dateTime.format('dddd D, MMMM YYYY H:mm:ss');
-
-                state.set('cssClass', cssClass);
-                state.set('serverDateTime', dateTimeVal);
-            });
-        }, 1000);
-
-        return {val: state.get('serverDateTime'), css: state.get('cssClass')};
+            }
+        });
     }
-});
+}
 
-// Config
-configTpl.helpers({
-    value: function () {
-        var data = {
-            module: Session.get('currentModule'),
-            branch: Session.get('currentBranch')
-        };
-        return data;
+CpanelWelcomeLogin.register('CpanelWelcomeLogin');
+
+/**
+ * Config
+ */
+class CpanelWelcomeConfig extends BlazeComponent {
+    // On created
+    onCreated() {
+        let self = this;
+        let rolesBranch = Meteor.user().rolesBranch;
+        self.autorun(function () {
+            self.subscribe('Cpanel.branch', {_id: {$in: rolesBranch}});
+        });
+
+        // AutoForm hook
+        AutoForm.hooks({
+            CpanelWelcomeConfig: {
+                onSubmit: function (insertDoc, updateDoc, currentDoc) {
+                    this.event.preventDefault();
+                    this.done(null, insertDoc);
+                },
+                onSuccess: function (formType, result) {
+                    // Set current session
+                    Session.setAuth('currentModule', result.module);
+                    Session.setAuth('currentBranch', result.branch);
+
+                    FlowRouter.go(s.decapitalize(result.module) + '.home');
+                }
+            }
+        });
     }
-});
-
-// Hook
-AutoForm.hooks({
-    cpanel_welcomeConfig: {
-        onSubmit: function (insertDoc, updateDoc, currentDoc) {
-            this.event.preventDefault();
-            this.done(null, insertDoc);
-        },
-        onSuccess: function (formType, result) {
-            // Set current session
-            Session.setAuth('currentModule', result.module);
-            Session.setAuth('currentBranch', result.branch);
-
-            FlowRouter.go(s.decapitalize(result.module) + '.home');
-        },
-        onError: function (formType, error) {
-            alertify.error(error.message);
-        }
+    
+    // Event
+    events() {
+        return [
+            {'click .js-sign-out': this.signOut}
+        ]
     }
-});
+
+    signOut(event) {
+        SignOut();
+    }
+}
+
+CpanelWelcomeConfig.register('CpanelWelcomeConfig');

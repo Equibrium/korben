@@ -1,6 +1,6 @@
 // Customer
 Sample.TabularTable.Customer = new Tabular.Table({
-    name: "sample_customerList",
+    name: "Sample_customerList",
     collection: Sample.Collection.Customer,
     pagingType: "full_numbers",
     autoWidth: false,
@@ -9,7 +9,7 @@ Sample.TabularTable.Customer = new Tabular.Table({
     }],
     order: [['1', 'desc']],
     columns: [
-        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.sample_customerAction},
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Sample_customerAction},
         {data: "_id", title: "ID"},
         {data: "name", title: "Name"},
         {data: "gender", title: "Gender"},
