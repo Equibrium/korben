@@ -1,4 +1,6 @@
-/***** Before */
+/**
+ * Hook
+ */
 Sample.Collection.Location.before.insert(function (userId, doc) {
     doc._id = idGenerator.gen(Sample.Collection.Location, 4);
 });

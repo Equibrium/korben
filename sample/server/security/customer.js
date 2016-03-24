@@ -1,10 +1,10 @@
 // Customer
 Sample.Collection.Customer.permit(['insert'])
-    .Sample_ifDataInsert()
+    .Sample_ifDataNew()
     .apply();
 Sample.Collection.Customer.permit(['update'])
-    .Sample_ifDataUpdate()
+    .Sample_ifDataEdit()
     .apply();
 Sample.Collection.Customer.permit(['remove'])
-    .Sample_ifDataRemove()
+    .Sample_ifDataDelete()
     .apply();

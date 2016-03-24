@@ -12,27 +12,27 @@ Security.defineMethod("Sample_ifSetting", {
 /**
  * Data Entry
  */
-Security.defineMethod("Sample_ifDataInsert", {
+Security.defineMethod("Sample_ifDataNew", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['data-insert'], 'Sample');
+        return !Roles.userIsInRole(userId, ['data-new'], 'Sample');
     }
 });
 
-Security.defineMethod("Sample_ifDataUpdate", {
+Security.defineMethod("Sample_ifDataEdit", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['data-update'], 'Sample');
+        return !Roles.userIsInRole(userId, ['data-edit'], 'Sample');
     }
 });
 
-Security.defineMethod("Sample_ifDataRemove", {
+Security.defineMethod("Sample_ifDataDelete", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['data-remove'], 'Sample');
+        return !Roles.userIsInRole(userId, ['data-delete'], 'Sample');
     }
 });
 

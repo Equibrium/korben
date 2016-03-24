@@ -6,18 +6,7 @@ class Sample_location extends BlazeComponent {
         // Create new  alertify
         createNewAlertify("location");
     }
-
-    // Helper
-    tabularClass() {
-        let self = this;
-        let cssClass = 'table table-striped table-bordered table-condensed table-hover';
-        if (self.cssClass) {
-            cssClass += '-' + this.cssClass;
-        }
-
-        return cssClass;
-    }
-
+    
     // Event
     events() {
         return [

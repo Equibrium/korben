@@ -1,5 +1,5 @@
 // Collection
-Sample.Collection.Customer = new Mongo.Collection("Sample_customer");
+Sample.Collection.Customer = new Mongo.Collection("sample_customer");
 
 // Schema
 Sample.Schema.Customer = new SimpleSchema({
@@ -14,11 +14,6 @@ Sample.Schema.Customer = new SimpleSchema({
             type: "select2",
             options: function () {
                 return Sample.List.gender();
-            },
-            afFieldInput: {
-                select2Options: {
-                    theme: "bootstrap"
-                }
             }
         }
     },
@@ -64,8 +59,7 @@ Sample.Schema.Customer = new SimpleSchema({
         }
     },
     branchId: {
-        type: String,
-        label: "Branch"
+        type: String
     }
 });
 

@@ -1,5 +1,5 @@
 // Collection
-Sample.Collection.Order = new Mongo.Collection("Sample_order");
+Sample.Collection.Order = new Mongo.Collection("sample_order");
 
 // Schema
 Sample.Schema.Order = new SimpleSchema({
@@ -46,23 +46,46 @@ Sample.Schema.Order = new SimpleSchema({
         type: String
     },
     'items.$.qty': {
-        type: Number
+        type: Number,
+        autoform: {
+            type: 'inputmask',
+            inputmaskOptions: function () {
+                return inputmaskOptions.integer();
+            }
+        }
     },
     'items.$.price': {
         type: Number,
-        decimal: true
+        decimal: true,
+        autoform: {
+            type: 'inputmask',
+            inputmaskOptions: function () {
+                return inputmaskOptions.currency();
+            }
+        }
     },
     'items.$.amount': {
         type: Number,
-        decimal: true
+        decimal: true,
+        autoform: {
+            type: 'inputmask',
+            inputmaskOptions: function () {
+                return inputmaskOptions.currency();
+            }
+        }
     },
     total: {
         type: Number,
-        decimal: true
+        decimal: true,
+        autoform: {
+            type: 'inputmask',
+            inputmaskOptions: function () {
+                return inputmaskOptions.currency();
+            }
+        }
     },
     branchId: {
-        type: String,
-        label: "Branch"
+        type: String
     }
 });
 

@@ -12,15 +12,3 @@ Meteor.publish('Sample.location', function (selector = {}, options = {}) {
 
     this.ready();
 });
-
-Meteor.publish('Sample_locationById', function (id) {
-    this.unblock();
-    if (this.userId) {
-        check(id, String);
-
-        return Sample.Collection.Location.find({_id: id});
-        //return Sample.Collection.Location.find({}, {removed: true}); // for soft remove
-    }
-
-    this.ready();
-});

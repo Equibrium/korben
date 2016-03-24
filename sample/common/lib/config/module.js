@@ -8,9 +8,9 @@ Module.Sample = {
     summary: 'Sample Management System is ...',
     roles: [
         'setting',
-        'data-insert',
-        'data-update',
-        'data-remove',
+        'data-new',
+        'data-edit',
+        'data-delete',
         'report'
     ],
     dump: {

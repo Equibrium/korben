@@ -1,24 +1,13 @@
 // Publication
-//Meteor.publish('Sample_customer', function (branchId) {
-//    this.unblock();
-//    if (this.userId) {
-//        var selector = {};
-//        if (!_.isUndefined(branchId)) {
-//            selector.branchId = branchId;
-//        }
-//
-//        return Sample.Collection.Customer.find(selector, {removed: true});
-//    }
-//
-//    this.ready();
-//});
-
-Meteor.publish('Sample_customerById', function (id) {
+Meteor.publish('Sample.customer', function (selector = {}, options = {}) {
     this.unblock();
     if (this.userId) {
-        check(id, String);
+        check(selector, Object);
+        check(options, Object);
 
-        return Sample.Collection.Customer.find({_id: id});
+        let data = Sample.Collection.Customer.find(selector, options);
+
+        return data;
     }
 
     this.ready();

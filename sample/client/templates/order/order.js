@@ -2,8 +2,8 @@
  * Declare template
  */
 var indexTpl = Template.Sample_order,
-    insertTpl = Template.Sample_orderInsert,
-    updateTpl = Template.Sample_orderUpdate,
+    newTpl = Template.Sample_orderNew,
+    editTpl = Template.Sample_orderEdit,
     showTpl = Template.Sample_orderShow,
 
     customerShowTpl = Template.Sample_customerShow;
@@ -13,12 +13,11 @@ var indexTpl = Template.Sample_order,
  */
 indexTpl.onCreated(function () {
     // Create new  alertify
-    createNewAlertify(['order'], {size: 'lg'});
-    createNewAlertify(['orderShow', 'customerShow']);
+    createNewAlertify('order', {size: 'lg'});
 
     // Subscription
     var customerId = FlowRouter.getParam('customerId');
-    this.subCustomer = this.subscribe('Sample_customerById', customerId);
+    this.subscribe('Sample.customer', {_id: customerId});
 });
 
 indexTpl.helpers({
@@ -31,68 +30,53 @@ indexTpl.helpers({
 });
 
 indexTpl.events({
-    'click .js-customerInfo': function (e, t) {
-        alertify.customerShow(fa("eye", "Customer"), renderTemplate(customerShowTpl, this));
+    'click .js-create': function (e, t) {
+        alertify.order(fa('plus', 'Order'), renderTemplate(newTpl))
+            .maximize();
     },
-    'click .insert': function (e, t) {
-        alertify.order(fa("plus", "Order"), renderTemplate(insertTpl));
+    'click .js-update': function (e, t) {
+        alertify.order(fa('pencil', 'Order'), renderTemplate(editTpl, this));
     },
-    'click .update': function (e, t) {
-        alertify.order(fa("pencil", "Order"), renderTemplate(updateTpl, this));
-    },
-    'click .remove': function (e, t) {
-        var self = this;
-
-        alertify.confirm(
-            fa("remove", "Order"),
-            "Are you sure to delete [" + self._id + "]?",
-            function () {
-                Sample.Collection.Order.remove(self._id, function (error) {
-                    if (error) {
-                        alertify.error(error.message);
-                    } else {
-                        alertify.success("Success");
-                    }
-                });
-            },
-            null
+    'click .js-destroy': function (e, t) {
+        destroyAction(
+            Sample.Collection.Order,
+            {_id: this._id},
+            {title: 'Order', item: this._id}
         );
-
     },
-    'click .show': function (e, t) {
-        alertify.orderShow(fa("eye", "Order"), renderTemplate(showTpl, this));
+    'click .js-display': function (e, t) {
+        alertify.alert(fa('eye', 'Order'), renderTemplate(showTpl, this).html);
+    },
+    'click .js-customerInfo': function (e, t) {
+        alertify.alert(fa('eye', 'Customer'), renderTemplate(customerShowTpl, this).html);
     }
 });
 
 /**
- * Insert
+ * New
  */
-insertTpl.onRendered(function () {
-    configOnRendered();
-});
-
-insertTpl.helpers({
+newTpl.helpers({
     customer: function () {
         return getCurrentCustomer();
     }
 });
 
 /**
- * Update
+ * Edit
  */
-updateTpl.onCreated(function () {
-    this.subscribe('Sample_orderById', this.data._id);
+editTpl.onCreated(function () {
+    let data = Template.currentData();
+    this.autorun(()=> {
+        this.subscribe('Sample.order', {_id: data._id});
+    });
 });
 
-updateTpl.onRendered(function () {
-    configOnRendered();
+editTpl.onRendered(function () {
 });
 
-updateTpl.helpers({
+editTpl.helpers({
     data: function () {
         var data = Sample.Collection.Order.findOne(this._id);
-        data.orderDate = moment(data.orderDate).format('YYYY-MM-DD');
-
         return data;
     }
 });
@@ -101,7 +85,10 @@ updateTpl.helpers({
  * Show
  */
 showTpl.onCreated(function () {
-    this.subscribe('Sample_orderById', this.data._id);
+    this.autorun(()=> {
+        let data = Template.currentData();
+        this.subscribe('Sample.order', {_id: data._id});
+    });
 });
 
 showTpl.helpers({
@@ -112,50 +99,39 @@ showTpl.helpers({
     }
 });
 
-// Hook
-AutoForm.hooks({
-    // Order
-    Sample_orderInsert: {
-        before: {
-            insert: function (doc) {
-                doc.branchId = Session.get('currentBranch');
-                return doc;
-            }
-        },
-        onSuccess: function (formType, result) {
-            itemsStateList.clear(); // Clear items state list from item template
-            alertify.success('Success');
-        },
-        onError: function (formType, error) {
-            alertify.error(error.message);
+/**
+ * Hook
+ */
+let hooksObject = {
+    before: {
+        insert: function (doc) {
+            doc.branchId = Session.get('currentBranch');
+            return doc;
         }
     },
-    Sample_orderUpdate: {
-        docToForm: function (doc, ss) {
-            doc.orderDate = moment(doc.orderDate).format('YYYY-MM-DD');
-            return doc;
-        },
-        onSuccess: function (formType, result) {
+    onSuccess: function (formType, result) {
+        if (formType == 'update') {
             alertify.order().close();
-            alertify.success('Success');
-        },
-        onError: function (formType, error) {
-            alertify.error(error.message);
         }
+        Bert.alert({
+            message: 'Success',
+            type: 'success'
+        });
+    },
+    onError: function (formType, error) {
+        Bert.alert({
+            message: error.message,
+            type: 'danger'
+        });
     }
-});
-
-// Config date picker
-var configOnRendered = function () {
-    var orderDate = $('[name="orderDate"]');
-    DateTimePicker.date(orderDate);
 };
+AutoForm.addHooks(['Sample_orderNew', 'Sample_orderEdit'], hooksObject);
 
 // Get current customer
 var getCurrentCustomer = function () {
     var id = FlowRouter.getParam('customerId');
     var data = Sample.Collection.Customer.findOne(id);
-    if (!_.isUndefined(data.photo)) {
+    if (data.photo) {
         data.photoUrl = Files.findOne(data.photo).url();
     } else {
         data.photoUrl = null;

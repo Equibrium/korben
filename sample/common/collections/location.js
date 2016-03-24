@@ -1,5 +1,5 @@
 // Collection
-Sample.Collection.Location = new Mongo.Collection("Sample_location");
+Sample.Collection.Location = new Mongo.Collection("sample_location");
 
 // Schema
 Sample.Schema.Location = new SimpleSchema({

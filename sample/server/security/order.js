@@ -1,10 +1,10 @@
 // Order
 Sample.Collection.Order.permit(['insert'])
-    .Sample_ifDataInsert()
+    .Sample_ifDataNew()
     .apply();
 Sample.Collection.Order.permit(['update'])
-    .Sample_ifDataUpdate()
+    .Sample_ifDataEdit()
     .apply();
 Sample.Collection.Order.permit(['remove'])
-    .Sample_ifDataRemove()
+    .Sample_ifDataDelete()
     .apply();

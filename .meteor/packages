@@ -70,6 +70,7 @@ aldeed:simple-schema
 percolate:migrations
 moonco:fixtures
 dburles:mongo-collection-instances
+#mikowals:batch-insert
 
 ### Pub, Sub ###
 meteorhacks:subs-manager

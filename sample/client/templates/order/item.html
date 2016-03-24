@@ -1,5 +1,5 @@
 <!--Item Temporary-->
-<template name="Sample_orderItem">
+<template name="Sample_orderItems">
     <div class="row">
         <div class="col-sm-4">
             <div class="form-group">
@@ -23,16 +23,17 @@
             </div>
         </div>
         <div class="col-sm-1">
-            <button type="button" class="btn btn-primary js-add-item" {{cssClassForAddMore}}>+</button>
+            <button type="button" class="btn btn-primary js-add-item" {{disabledAddItemBtn}}>+</button>
         </div>
     </div>
     <hr>
-    {{#each items}}
-        <div class="row list">
-            <div class="col-sm-4">{{> afQuickField name=indexNmae value=name class="js-name" readonly="true" label=false}}</div>
-            <div class="col-sm-2">{{> afQuickField name=indexQty type="text" value=qty class="js-qty" label=false}}</div>
-            <div class="col-sm-2">{{> afQuickField name=indexPrice type="text" value=price class="js-price" label=false}}</div>
-            <div class="col-sm-3">{{> afQuickField name=indexAmount type="text" value=amount class="js-amount" readonly="true" label=false}}</div>
+
+    {{#each item in itemsList}}
+        <div class="row item">
+            <div class="col-sm-4">{{> afQuickField name=(keyArgs @index "name") value=item.name class="js-name" readonly="true" label=false}}</div>
+            <div class="col-sm-2">{{> afQuickField name=(keyArgs @index "qty") value=item.qty class="js-qty" label=false}}</div>
+            <div class="col-sm-2">{{> afQuickField name=(keyArgs @index "price") value=item.price class="js-price" label=false}}</div>
+            <div class="col-sm-3">{{> afQuickField name=(keyArgs @index "amount") value=item.amount class="js-amount" readonly="true" label=false}}</div>
             <div class="col-sm-1">
                 <button type="button" class="btn btn-danger js-remove-item">-</button>
             </div>
@@ -40,9 +41,12 @@
     {{/each}}
 
     <div class="row">
-        <div class="col-sm-8"></div>
-        <div class="col-sm-3">
-            {{> afQuickField name="total" type="text" value=total}}
+        <div class="col-sm-8">
+            <div class="pull-right">Total:</div>
         </div>
+        <div class="col-sm-3">
+            {{> afQuickField name="total" value=total label=false}}
+        </div>
+        <div class="col-sm-1"></div>
     </div>
 </template>
