@@ -16,8 +16,10 @@ Template._sidebarLayout.helpers({
 Template._sidebarForm.onCreated(function () {
     let self = this;
     self.autorun(function () {
-        let rolesBranch = Meteor.user().rolesBranch;
-        self.subscribe('Cpanel.branch', {_id: {$in: rolesBranch}});
+        let currentUser = Meteor.user();
+        if (currentUser && currentUser.rolesBranch) {
+            self.subscribe('Cpanel.branch', {_id: {$in: currentUser.rolesBranch}});
+        }
     });
 });
 

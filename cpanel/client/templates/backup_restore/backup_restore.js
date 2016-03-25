@@ -9,9 +9,11 @@ var state = new ReactiveObj({
 
 Template.Cpanel_backup.onCreated(function () {
     let self = this;
-    let rolesBranch = Meteor.user().rolesBranch;
     self.autorun(function () {
-        self.subscribe('Cpanel.branch', {_id: {$in: rolesBranch}});
+        let currentUser = Meteor.user();
+        if (currentUser && currentUser.rolesBranch) {
+            self.subscribe('Cpanel.branch', {_id: {$in: currentUser.rolesBranch}});
+        }
     });
 });
 
@@ -90,9 +92,11 @@ var restoreWaiting = new ReactiveVar(false);
 
 Template.Cpanel_restore.onCreated(function () {
     let self = this;
-    let rolesBranch = Meteor.user().rolesBranch;
     self.autorun(function () {
-        self.subscribe('Cpanel.branch', {_id: {$in: rolesBranch}});
+        let currentUser = Meteor.user();
+        if(currentUser && currentUser.rolesBranch){
+            self.subscribe('Cpanel.branch', {_id: {$in: currentUser.rolesBranch}});
+        }
     });
 });
 

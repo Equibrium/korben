@@ -11,27 +11,27 @@ indexTpl.onCreated(function () {
 });
 
 indexTpl.events({
-    'click .js-create': function (e, t) {
+    'click .js-create' (e, t) {
         alertify.exchange(fa("plus", "Exchange"), renderTemplate(newTpl));
     },
-    'click .js-update': function (e, t) {
+    'click .js-update' (e, t) {
         alertify.exchange(fa("pencil", "Exchange"), renderTemplate(editTpl, this));
     },
-    'click .js-destroy': function (e, t) {
+    'click .js-destroy' (e, t) {
         destroyAction(
             Cpanel.Collection.Exchange,
             {_id: this._id},
             {title: 'Exchange', item: moment(self.exDate).format('DD/MM/YYYY')}
         );
     },
-    'click .js-display': function (e, t) {
+    'click .js-display' (e, t) {
         alertify.alert(fa("eye", "Exchange"), renderTemplate(showTpl, this).html);
     }
 });
 
 // New
 newTpl.helpers({
-    doc: function () {
+    doc () {
         let khr = 0, usd = 0, thb = 0;
         let baseCurrency = Cpanel.Collection.Setting.findOne().baseCurrency;
 
@@ -56,7 +56,7 @@ editTpl.onCreated(function () {
 });
 
 editTpl.helpers({
-    data: function () {
+    data () {
         let data = Cpanel.Collection.Exchange.findOne(this._id);
         return data;
     }
@@ -71,7 +71,7 @@ showTpl.onCreated(function () {
 });
 
 showTpl.helpers({
-    data: function () {
+    data () {
         let data = Cpanel.Collection.Exchange.findOne(this._id);
         data.ratesVal = JSON.stringify(data.rates);
         return data;

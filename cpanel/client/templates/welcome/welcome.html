@@ -1,18 +1,19 @@
-<template name="CpanelWelcome">
+<!--Index-->
+<template name="Cpanel_welcome">
     {{#if currentUser}}
         {{#if role}}
-            {{> CpanelWelcomeConfig}}
+            {{> Cpanel_welcomeConfig}}
         {{else}}
-            {{> CpanelWelcomeAccessDenied}}
+            {{> Cpanel_welcomeAccessDenied}}
         {{/if}}
     {{else}}
-        {{> CpanelWelcomeLogin}}
+        {{> Cpanel_welcomeLogin}}
     {{/if}}
 </template>
 
 <!--Login-->
-<template name="CpanelWelcomeLogin">
-    {{#autoForm schema=Cpanel.Schema.WelcomeLogin id="CpanelWelcomeLogin"}}
+<template name="Cpanel_welcomeLogin">
+    {{#autoForm schema=Cpanel.Schema.WelcomeLogin id="Cpanel_welcomeLogin"}}
         <div class="form-group has-feedback{{#if afFieldIsInvalid name="username"}} has-error{{/if}}">
             {{> afFieldInput name="username" placeholder="Username"}}
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -39,22 +40,10 @@
     {{/autoForm}}
 </template>
 
-
-<!--Access Denied-->
-<template name="CpanelWelcomeAccessDenied">
-    <div class="alert alert-danger" role="alert">
-        <h2>[403]</h2>
-
-        <p>
-            Sorry, you couldn't access this application. Please contact administrator.
-        </p>
-    </div>
-</template>
-
 <!--Config-->
-<template name="CpanelWelcomeConfig">
+<template name="Cpanel_welcomeConfig">
     {{#if templateSubsReady}}
-        {{#autoForm schema=Cpanel.Schema.WelcomeConfig id="CpanelWelcomeConfig" type="normal"}}
+        {{#autoForm schema=Cpanel.Schema.WelcomeConfig id="Cpanel_welcomeConfig"}}
             <div class="row">
                 <div class="col-xs-12">
                     {{> afQuickField name="module"}}
@@ -81,4 +70,15 @@
             {{> iconLoading}}
         </div>
     {{/if}}
+</template>
+
+<!--Access Denied-->
+<template name="Cpanel_welcomeAccessDenied">
+    <div class="alert alert-danger" role="alert">
+        <h2>[403]</h2>
+
+        <p>
+            Sorry, you couldn't access this application. Please contact administrator.
+        </p>
+    </div>
 </template>

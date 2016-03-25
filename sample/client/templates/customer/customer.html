@@ -30,9 +30,7 @@
                 {{> afQuickField name="email"}}
 
                 <div class="form-group{{#if afFieldIsInvalid name="locationId"}} has-error{{/if}}" data-required="true">
-                    <label class="control-label" for="locationId">Location:
-                        <span class="label label-info">{{location.name}}</span>
-                    </label>
+                    <label class="control-label" for="locationId">Location</label>
 
                     <div class="input-group">
                         {{> afFieldInput name="locationId" value=location.id readonly="true"}}
@@ -40,6 +38,12 @@
                             <a href="#" class="js-location-addon">{{fa "list"}}</a>
                         </span>
                     </div>
+
+                    <!--Location Name-->
+                    {{#if location.name}}
+                        <span class="help-block">{{location.name}}</span>
+                    {{/if}}
+
                     {{#if afFieldIsInvalid name="locationId"}}
                         <span class="help-block">{{afFieldMessage name="locationId"}}</span>
                     {{/if}}
@@ -69,17 +73,21 @@
                 <div class="col-md-6">
                     {{> afQuickField name="email"}}
 
-                    <div class="form-group{{#if afFieldIsInvalid name="locationId"}} has-error{{/if}}" data-required="true">
-                        <label class="control-label" for="locationId">Location:
-                            <span class="label label-info">{{location.name}}</span>
-                        </label>
+                    <div class="form-group{{#if afFieldIsInvalid name="locationId"}} has-error{{/if}}"
+                         data-required="true">
+                        <label class="control-label" for="locationId">Location</label>
 
                         <div class="input-group">
                             {{> afFieldInput name="locationId" value=location.id readonly="true"}}
                             <span class="input-group-addon">
-                            <a href="#" class="js-location-addon">{{fa "list"}}</a>
-                        </span>
+                                <a href="#" class="js-location-addon">{{fa "list"}}</a>
+                            </span>
                         </div>
+                        <!--Location Name-->
+                        {{#if location.name}}
+                            <span class="help-block">{{location.name}}</span>
+                        {{/if}}
+
                         {{#if afFieldIsInvalid name="locationId"}}
                             <span class="help-block">{{afFieldMessage name="locationId"}}</span>
                         {{/if}}

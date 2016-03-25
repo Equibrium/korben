@@ -7,40 +7,40 @@
 
     <!--Data-->
     {{#if isInRole 'data-new,data-edit,data-delete' 'Sample'}}
-        <li class="header">DATA</li>
+        <li class="header"><i class="fa fa-database"></i> DATA</li>
         <li class="{{isActiveRoute name='sample.customer'}}">
             <a href="{{pathFor 'sample.customer'}}">
-                <i class="fa fa-users"></i> <span>Customer</span>
+                <i class="fa fa-circle-o"></i> <span>Customer</span>
             </a>
         </li>
     {{/if}}
 
     <!--Report-->
     {{#if isInRole 'report' 'Sample'}}
-        <li class="header">REPORT</li>
+        <li class="header"><i class="fa fa-file-o"></i> REPORT</li>
         <li class="{{isActiveRoute name='sample.customerReport'}}">
             <a href="{{pathFor 'sample.customerReport'}}">
-                <i class="fa fa-users"></i> <span>Customer (Browser View)</span>
+                <i class="fa fa-circle-o"></i> <span>Customer (Browser View)</span>
             </a>
         </li>
         <li class="{{isActiveRoute name='sample.customerExcelReport'}}">
             <a href="{{pathFor 'sample.customerExcelReport'}}">
-                <i class="fa fa-users"></i> <span>Customer (Excel)</span>
+                <i class="fa fa-circle-o"></i> <span>Customer (Excel)</span>
             </a>
         </li>
     {{/if}}
 
     <!--Settings-->
     {{#if isInRole 'setting' 'Sample'}}
-        <li class="header">SETTING</li>
+        <li class="header"><i class="fa fa-cogs"></i> SETTING</li>
         <li class="{{isActiveRoute name='cpanel.exchange'}}">
             <a href="{{pathFor 'cpanel.exchange'}}">
-                <i class="fa fa-exchange"></i> <span>Exchange</span>
+                <i class="fa fa-circle-o"></i> <span>Exchange</span>
             </a>
         </li>
         <li class="{{isActiveRoute name='sample.location'}}">
             <a href="{{pathFor 'sample.location'}}">
-                <i class="fa fa-map-marker"></i> <span>Location</span>
+                <i class="fa fa-circle-o"></i> <span>Location</span>
             </a>
         </li>
     {{/if}}

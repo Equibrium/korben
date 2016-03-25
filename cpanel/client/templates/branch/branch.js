@@ -1,35 +1,41 @@
-// Declare template
+/**
+ * Declare template
+ */
 var indexTpl = Template.Cpanel_branch,
     newTpl = Template.Cpanel_branchNew,
     editTpl = Template.Cpanel_branchEdit,
     showTpl = Template.Cpanel_branchShow;
 
-// Index
+/**
+ * Index
+ */
 indexTpl.onCreated(function () {
     // Create new  alertify
     createNewAlertify("branch", {size: 'lg'});
 });
 
 indexTpl.events({
-    'click .js-create': function (e, t) {
+    'click .js-create' (e, t) {
         alertify.branch(fa("plus", "Branch"), renderTemplate(newTpl));
     },
-    'click .js-update': function (e, t) {
+    'click .js-update' (e, t) {
         alertify.branch(fa("pencil", "Branch"), renderTemplate(editTpl, this));
     },
-    'click .js-destroy': function (e, t) {
+    'click .js-destroy' (e, t) {
         destroyAction(
             Cpanel.Collection.Branch,
             {_id: this._id},
             {title: 'Branch', item: this._id}
         );
     },
-    'click .js-display': function (e, t) {
+    'click .js-display' (e, t) {
         alertify.alert(fa("eye", "Branch"), renderTemplate(showTpl, this).html);
     }
 });
 
-// Edit
+/**
+ * Edit
+ */
 editTpl.onCreated(function () {
     let self = this;
     self.autorun(function () {
@@ -38,13 +44,15 @@ editTpl.onCreated(function () {
 });
 
 editTpl.helpers({
-    data: function () {
+    data () {
         let data = Cpanel.Collection.Branch.findOne(this._id);
         return data;
     }
 });
 
-// Show
+/**
+ * Show
+ */
 showTpl.onCreated(function () {
     let self = this;
     self.autorun(function () {
@@ -53,41 +61,34 @@ showTpl.onCreated(function () {
 });
 
 showTpl.helpers({
-    data: function () {
+    data () {
         let data = Cpanel.Collection.Branch.findOne(this._id);
         return data;
     }
 });
 
-// Hook
-AutoForm.hooks({
-    Cpanel_branchNew: {
-        onSuccess: function (formType, result) {
-            Bert.alert({
-                message: 'Success',
-                type: 'success'
-            });
-        },
-        onError: function (formType, error) {
-            Bert.alert({
-                message: error.message,
-                type: 'danger'
-            });
-        }
-    },
-    Cpanel_branchEdit: {
-        onSuccess: function (formType, result) {
+/**
+ * Hook
+ */
+let hooksObject = {
+    onSuccess (formType, result) {
+        if (formType == 'update') {
             alertify.branch().close();
-            Bert.alert({
-                message: 'Success',
-                type: 'success'
-            });
-        },
-        onError: function (formType, error) {
-            Bert.alert({
-                message: error.message,
-                type: 'danger'
-            });
         }
+        Bert.alert({
+            message: 'Success',
+            type: 'success'
+        });
+    },
+    onError (formType, error) {
+        Bert.alert({
+            message: error.message,
+            type: 'danger'
+        });
     }
-});
+};
+
+AutoForm.addHooks([
+    'Sample_branchNew',
+    'Sample_branchEdit'
+], hooksObject);

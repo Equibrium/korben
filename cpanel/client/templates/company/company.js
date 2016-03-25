@@ -9,20 +9,20 @@ indexTpl.onCreated(function () {
 });
 
 indexTpl.helpers({
-    data: function () {
+    data () {
         return Cpanel.Collection.Company.findOne();
     }
 });
 
 indexTpl.events({
-    'click .js-update': function (e, t) {
+    'click .js-update' (e, t) {
         alertify.company(fa("pencil", "Company"), renderTemplate(editTpl, this));
     }
 });
 
 // Edit
 editTpl.helpers({
-    data: function () {
+    data () {
         let data = Cpanel.Collection.Company.findOne(this._id);
         return data;
     }

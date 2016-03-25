@@ -61,8 +61,9 @@ Cpanel.List = {
         var list = [];
         list.push({label: "(Select One)", value: ""});
 
-        var rolesBranch = Meteor.users.findOne(userIdVal).rolesBranch;
-        if (rolesBranch) {
+        var currentUser = Meteor.users.findOne(userIdVal);
+        if (currentUser && currentUser.rolesBranch) {
+            let rolesBranch = currentUser.rolesBranch;
             var branches = Cpanel.Collection.Branch.find({_id: {$in: rolesBranch}}, {sort: {_id: 1}});
             branches.forEach(function (branch) {
                 list.push({label: branch.enName, value: branch._id});
@@ -76,11 +77,12 @@ Cpanel.List = {
         var list = [];
         // list.push({label: "(Select One)", value: ""});
 
-        var getUser = Meteor.users.findOne(userIdVal);
-        if (getUser) {
-            _.each(getUser.rolesBranch, function (branch) {
+        var currentUser = Meteor.users.findOne(userIdVal);
+        if (currentUser && currentUser.rolesBranch) {
+            let rolesBranch = currentUser.rolesBranch;
+            _.each(rolesBranch, function (branch) {
                 var label = Cpanel.Collection.Branch.findOne(branch);
-                if (label.enName) {
+                if (label && label.enName) {
                     list.push({label: label.enName, value: branch});
                 }
             });
@@ -135,10 +137,12 @@ Cpanel.List = {
             if (type == 'all' || type == 'setting') {
                 list.push({label: '- All -', value: 'all'});
             } else {
-                _.each(Meteor.user().rolesBranch, function (branch) {
-                    let getBranch = Cpanel.Collection.Branch.findOne(branch);
-                    list.push({label: getBranch.enName, value: getBranch._id});
-                });
+                if (Meteor.user() && Meteor.user().rolesBranch) {
+                    _.each(Meteor.user().rolesBranch, function (branch) {
+                        let getBranch = Cpanel.Collection.Branch.findOne(branch);
+                        list.push({label: getBranch.enName, value: getBranch._id});
+                    });
+                }
             }
         }
         list.unshift({label: '(Select One)', value: ''});

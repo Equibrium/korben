@@ -16,9 +16,9 @@
                     <!--<span class="badge bg-{{cssColor}}">-->
                         <!--<i class="fa fa-calendar"></i>-->
                     <!--</span>-->
-                    <span class="text-{{cssColor}}">
-                        {{#if dateTimeVal}}
-                            {{dateTimeVal}}
+                    <span class="text-{{currentDate.cssColor}}">
+                        {{#if currentDate.value}}
+                            {{currentDate.value}}
                         {{else}}
                             {{> iconLoading}}
                         {{/if}}

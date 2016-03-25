@@ -7,7 +7,7 @@
 meteor-base             # Packages every Meteor app needs to have
 mobile-experience       # Packages for a great mobile UX
 mongo                   # The database Meteor supports right now
-#blaze-html-templates    # Compile .html files into Meteor Blaze views
+blaze-html-templates    # Compile .html files into Meteor Blaze views
 session                 # Client-side reactive dictionary for your app
 jquery                  # Helpful client-side library
 tracker                 # Meteor's client-side reactive programming library
@@ -70,7 +70,6 @@ aldeed:simple-schema
 percolate:migrations
 moonco:fixtures
 dburles:mongo-collection-instances
-#mikowals:batch-insert
 
 ### Pub, Sub ###
 meteorhacks:subs-manager
@@ -92,7 +91,7 @@ digilord:faker
 anti:fake
 
 ### Template ###
-peerlibrary:blaze-components
+#peerlibrary:blaze-components
 aldeed:autoform
 #natestrauser:select2
 #zimme:select2-bootstrap3-css
@@ -150,7 +149,7 @@ ostrio:meteor-root
 xamfoo:reactive-obj
 manuel:reactivearray
 frozeman:template-var
-peerlibrary:reactive-field
+#peerlibrary:reactive-field
 
 ### Excel ###
 netanelgilad:node-uuid
