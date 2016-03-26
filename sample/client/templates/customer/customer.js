@@ -67,6 +67,9 @@ newTpl.onCreated(function () {
     createNewAlertify('customerAddon', {size: 'lg'});
 });
 
+newTpl.onRendered(function () {
+});
+
 newTpl.helpers({
     location() {
         return {id: locationState.get('id'), name: locationState.get('name')};

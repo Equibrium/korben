@@ -82,6 +82,9 @@ meteorhacks:unblock
 sacha:spin
 
 ### Method ###
+mdg:validated-method
+tunifight:loggedin-mixin
+didericis:callpromise-mixin
 simple:reactive-method
 okgrow:promise
 msavin:fetcher
@@ -150,6 +153,7 @@ xamfoo:reactive-obj
 manuel:reactivearray
 frozeman:template-var
 #peerlibrary:reactive-field
+theara:template-states
 
 ### Excel ###
 netanelgilad:node-uuid

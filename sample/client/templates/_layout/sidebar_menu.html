@@ -18,14 +18,9 @@
     <!--Report-->
     {{#if isInRole 'report' 'Sample'}}
         <li class="header"><i class="fa fa-file-o"></i> REPORT</li>
-        <li class="{{isActiveRoute name='sample.customerReport'}}">
-            <a href="{{pathFor 'sample.customerReport'}}">
-                <i class="fa fa-circle-o"></i> <span>Customer (Browser View)</span>
-            </a>
-        </li>
-        <li class="{{isActiveRoute name='sample.customerExcelReport'}}">
-            <a href="{{pathFor 'sample.customerExcelReport'}}">
-                <i class="fa fa-circle-o"></i> <span>Customer (Excel)</span>
+        <li class="{{isActiveRoute name='sample.orderReport'}}">
+            <a href="{{pathFor 'sample.orderReport'}}">
+                <i class="fa fa-circle-o"></i> <span>Order</span>
             </a>
         </li>
     {{/if}}

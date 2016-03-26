@@ -11,3 +11,6 @@ Sample.Schema = {};
 
 /* Tabular */
 Sample.TabularTable = {};
+
+/* Method */
+Sample.Method = {};
