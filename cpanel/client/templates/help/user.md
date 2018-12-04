@@ -1,4 +1,4 @@
-{{#template name="Cpanel_helpUser"}}
+{{#template name="Korben_helpUser"}}
 
 ## User
 
@@ -6,7 +6,7 @@
 
 -> Data Menu -> User
 
-![User List](/cpanel/user-list.png)
+![User List](/korben/user-list.png)
 
 1. Add New: បង្កើតអ្នកប្រើប្រាស់ថ្មី
 2. Show ... entries: ចំនួនទិន្នន័យដែលត្រូវបង្ហាញក្នុងតារាង
@@ -16,7 +16,7 @@
 
 ### Add New
 
-![Add New User](/cpanel/user-add.png)
+![Add New User](/korben/user-add.png)
 
 1. User: ចំណងជើងនៃទំរង់បញ្ចូលទិន្នន័យ
 2. Tool Icon: សម្រាប់ពង្រីក ពង្រួម ឬបិតទំរង់បញ្ចូលទិន្នន័យ

@@ -1,8 +1,8 @@
 // Declare template
-let indexTpl = Template.Cpanel_user,
-    newTpl = Template.Cpanel_userNew,
-    editTpl = Template.Cpanel_userEdit,
-    showTpl = Template.Cpanel_userShow;
+let indexTpl = Template.Korben_user,
+    newTpl = Template.Korben_userNew,
+    editTpl = Template.Korben_userEdit,
+    showTpl = Template.Korben_userShow;
 
 // Index
 indexTpl.onCreated(function () {
@@ -49,7 +49,7 @@ indexTpl.events({
 newTpl.onCreated(function () {
     let self = this;
     self.autorun(function () {
-        self.subscribe('Cpanel.branch', {});
+        self.subscribe('Korben.branch', {});
     });
 });
 
@@ -57,8 +57,8 @@ newTpl.onCreated(function () {
 editTpl.onCreated(function () {
     let self = this;
     self.autorun(function () {
-        self.subscribe('Cpanel.branch', {});
-        self.subscribe('Cpanel.user', {_id: self.data._id});
+        self.subscribe('Korben.branch', {});
+        self.subscribe('Korben.user', {_id: self.data._id});
     });
 });
 
@@ -91,7 +91,7 @@ editTpl.helpers({
 showTpl.onCreated(function () {
     let self = this;
     self.autorun(function () {
-        self.subscribe('Cpanel.user', {_id: self.data._id});
+        self.subscribe('Korben.user', {_id: self.data._id});
     });
 });
 
@@ -127,7 +127,7 @@ showTpl.helpers({
 
 // Hook
 AutoForm.hooks({
-    Cpanel_userNew: {
+    Korben_userNew: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             this.event.preventDefault();
 
@@ -155,7 +155,7 @@ AutoForm.hooks({
             });
         }
     },
-    Cpanel_userEdit: {
+    Korben_userEdit: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             this.event.preventDefault();
 

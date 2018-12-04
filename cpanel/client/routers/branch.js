@@ -1,14 +1,14 @@
-cpanelRoutes.route('/branch', {
-    name: 'cpanel.branch',
+korbenRoutes.route('/branch', {
+    name: 'korben.branch',
     title: 'Branch',
     action: function (params, queryParams) {
-        Layout.main('Cpanel_branch');
+        Layout.main('Korben_branch');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: 'Branch',
         icon: 'sitemap',
-        parent: 'cpanel.welcome'
+        parent: 'korben.welcome'
     }
 });

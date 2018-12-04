@@ -1,19 +1,19 @@
 <!--Index-->
-<template name="Cpanel_welcome">
+<template name="Korben_welcome">
     {{#if currentUser}}
         {{#if role}}
-            {{> Cpanel_welcomeConfig}}
+            {{> Korben_welcomeConfig}}
         {{else}}
-            {{> Cpanel_welcomeAccessDenied}}
+            {{> Korben_welcomeAccessDenied}}
         {{/if}}
     {{else}}
-        {{> Cpanel_welcomeLogin}}
+        {{> Korben_welcomeLogin}}
     {{/if}}
 </template>
 
 <!--Login-->
-<template name="Cpanel_welcomeLogin">
-    {{#autoForm schema=Cpanel.Schema.WelcomeLogin id="Cpanel_welcomeLogin"}}
+<template name="Korben_welcomeLogin">
+    {{#autoForm schema=Korben.Schema.WelcomeLogin id="Korben_welcomeLogin"}}
         <div class="form-group has-feedback{{#if afFieldIsInvalid name="username"}} has-error{{/if}}">
             {{> afFieldInput name="username" placeholder="Username"}}
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -41,9 +41,9 @@
 </template>
 
 <!--Config-->
-<template name="Cpanel_welcomeConfig">
+<template name="Korben_welcomeConfig">
     {{#if templateSubsReady}}
-        {{#autoForm schema=Cpanel.Schema.WelcomeConfig id="Cpanel_welcomeConfig"}}
+        {{#autoForm schema=Korben.Schema.WelcomeConfig id="Korben_welcomeConfig"}}
             <div class="row">
                 <div class="col-xs-12">
                     {{> afQuickField name="module"}}
@@ -73,7 +73,7 @@
 </template>
 
 <!--Access Denied-->
-<template name="Cpanel_welcomeAccessDenied">
+<template name="Korben_welcomeAccessDenied">
     <div class="alert alert-danger" role="alert">
         <h2>[403]</h2>
 

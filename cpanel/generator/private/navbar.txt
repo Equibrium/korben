@@ -38,8 +38,8 @@
                 Settings <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-                <li class="{{isActiveRoute name='cpanel.exchange'}}">
-                    <a href="{{pathFor 'cpanel.exchange'}}">Exchange</a>
+                <li class="{{isActiveRoute name='korben.exchange'}}">
+                    <a href="{{pathFor 'korben.exchange'}}">Exchange</a>
                 </li>
                 <li class="{{isActiveRoute name='{{MODULE_NAME_CAM}}.location'}}">
                     <a href="{{pathFor '{{MODULE_NAME_CAM}}.location'}}">Location</a>

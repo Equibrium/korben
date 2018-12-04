@@ -2,7 +2,7 @@
  * Schema
  */
 // Login
-Cpanel.Schema.WelcomeLogin = new SimpleSchema({
+Korben.Schema.WelcomeLogin = new SimpleSchema({
     username: {
         type: String
     },
@@ -12,14 +12,14 @@ Cpanel.Schema.WelcomeLogin = new SimpleSchema({
 });
 
 // Config
-Cpanel.Schema.WelcomeConfig = new SimpleSchema({
+Korben.Schema.WelcomeConfig = new SimpleSchema({
     module: {
         type: String,
         label: 'Module',
         autoform: {
             type: "select2",
             options: function () {
-                return Meteor.isClient && Cpanel.List.roleForUser();
+                return Meteor.isClient && Korben.List.roleForUser();
             },
             afFieldInput: {
                 value: function () {
@@ -34,7 +34,7 @@ Cpanel.Schema.WelcomeConfig = new SimpleSchema({
         autoform: {
             type: "select2",
             options: function () {
-                return Meteor.isClient && Cpanel.List.branchForUser();
+                return Meteor.isClient && Korben.List.branchForUser();
             },
             afFieldInput: {
                 value: function () {
@@ -45,14 +45,14 @@ Cpanel.Schema.WelcomeConfig = new SimpleSchema({
     }
 });
 
-Cpanel.Schema.SidebarBranch = new SimpleSchema({
+Korben.Schema.SidebarBranch = new SimpleSchema({
     branch: {
         type: String,
         label: "Branch",
         autoform: {
             type: "select2",
             options: function () {
-                return Meteor.isClient && Cpanel.List.branchForUserOnSidebar();
+                return Meteor.isClient && Korben.List.branchForUserOnSidebar();
             },
             afFieldInput: {
                 value: function () {

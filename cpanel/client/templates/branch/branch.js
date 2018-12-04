@@ -1,10 +1,10 @@
 /**
  * Declare template
  */
-var indexTpl = Template.Cpanel_branch,
-    newTpl = Template.Cpanel_branchNew,
-    editTpl = Template.Cpanel_branchEdit,
-    showTpl = Template.Cpanel_branchShow;
+var indexTpl = Template.Korben_branch,
+    newTpl = Template.Korben_branchNew,
+    editTpl = Template.Korben_branchEdit,
+    showTpl = Template.Korben_branchShow;
 
 /**
  * Index
@@ -23,7 +23,7 @@ indexTpl.events({
     },
     'click .js-destroy' (e, t) {
         destroyAction(
-            Cpanel.Collection.Branch,
+            Korben.Collection.Branch,
             {_id: this._id},
             {title: 'Branch', item: this._id}
         );
@@ -39,13 +39,13 @@ indexTpl.events({
 editTpl.onCreated(function () {
     let self = this;
     self.autorun(function () {
-        self.subscribe('Cpanel.branch', {_id: self.data._id});
+        self.subscribe('Korben.branch', {_id: self.data._id});
     });
 });
 
 editTpl.helpers({
     data () {
-        let data = Cpanel.Collection.Branch.findOne(this._id);
+        let data = Korben.Collection.Branch.findOne(this._id);
         return data;
     }
 });
@@ -56,13 +56,13 @@ editTpl.helpers({
 showTpl.onCreated(function () {
     let self = this;
     self.autorun(function () {
-        self.subscribe('Cpanel.branch', {_id: self.data._id});
+        self.subscribe('Korben.branch', {_id: self.data._id});
     });
 });
 
 showTpl.helpers({
     data () {
-        let data = Cpanel.Collection.Branch.findOne(this._id);
+        let data = Korben.Collection.Branch.findOne(this._id);
         return data;
     }
 });

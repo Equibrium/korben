@@ -1,8 +1,8 @@
 /* Setting */
-Meteor.publish('Cpanel.setting', function () {
+Meteor.publish('Korben.setting', function () {
     this.unblock();
     if (this.userId) {
-        let data = Cpanel.Collection.Setting.find();
+        let data = Korben.Collection.Setting.find();
         return data;
     }
 

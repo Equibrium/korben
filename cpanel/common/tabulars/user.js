@@ -1,5 +1,5 @@
-Cpanel.TabularTable.User = new Tabular.Table({
-    name: "cpanelUserList",
+Korben.TabularTable.User = new Tabular.Table({
+    name: "korbenUserList",
     collection: Meteor.users,
     selector: function (userId) {
         return {username: {$ne: 'super'}}
@@ -11,7 +11,7 @@ Cpanel.TabularTable.User = new Tabular.Table({
     ],
     order: [['1', 'desc']],
     columns: [
-        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Cpanel_userAction},
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Korben_userAction},
         {data: "username", title: "User Name"},
         {
             data: "emails",

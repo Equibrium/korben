@@ -1,8 +1,8 @@
 /*
  Currency
  */
-Meteor.publish('cpanel_currency', function () {
+Meteor.publish('korben_currency', function () {
     if (this.userId) {
-        return Cpanel.Collection.Currency.find();
+        return Korben.Collection.Currency.find();
     }
 });

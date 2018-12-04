@@ -3,7 +3,7 @@ if (Meteor.server) {
     var path = Npm.require('path');
     var basePath = path.resolve('.').split('.meteor')[0];
 
-    var tmplPath = path.join(basePath, 'cpanel', 'generator', 'private');
+    var tmplPath = path.join(basePath, 'korben', 'generator', 'private');
     var tmplFile = {
         module: path.join(tmplPath, 'module.txt'),
         namespace: path.join(tmplPath, 'namespace.txt'),
@@ -16,7 +16,7 @@ if (Meteor.server) {
     };
 
     Meteor.methods({
-        cpanel_generatorModule: function (moduleName) {
+        korben_generatorModule: function (moduleName) {
             check(moduleName, String);
 
             let _path = _modulePath(moduleName);

@@ -1,14 +1,14 @@
-cpanelRoutes.route('/home', {
-    name: 'cpanel.home',
+korbenRoutes.route('/home', {
+    name: 'korben.home',
     title: 'Home',
     action: function (params, queryParams) {
-        Layout.main('Cpanel_home');
+        Layout.main('Korben_home');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: 'Home',
         icon: 'home',
-        parent: 'cpanel.welcome'
+        parent: 'korben.welcome'
     }
 });

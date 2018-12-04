@@ -1,14 +1,14 @@
-cpanelRoutes.route('/exchange', {
-    name: 'cpanel.exchange',
+korbenRoutes.route('/exchange', {
+    name: 'korben.exchange',
     title: 'Exchange',
     action: function (params, queryParams) {
-        Layout.main('Cpanel_exchange');
+        Layout.main('Korben_exchange');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: 'Exchange',
         icon: 'exchange',
-        parent: 'cpanel.welcome'
+        parent: 'korben.welcome'
     }
 });

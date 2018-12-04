@@ -7,28 +7,28 @@ var state = new ReactiveObj({
     branch: ''
 });
 
-Template.Cpanel_backup.onCreated(function () {
+Template.Korben_backup.onCreated(function () {
     let self = this;
     self.autorun(function () {
         let currentUser = Meteor.user();
         if (currentUser && currentUser.rolesBranch) {
-            self.subscribe('Cpanel.branch', {_id: {$in: currentUser.rolesBranch}});
+            self.subscribe('Korben.branch', {_id: {$in: currentUser.rolesBranch}});
         }
     });
 });
 
-Template.Cpanel_backup.helpers({
+Template.Korben_backup.helpers({
     type: function () {
         let module = state.get('module');
-        return Cpanel.List.typeForBackupRestore(module);
+        return Korben.List.typeForBackupRestore(module);
     },
     branch: function () {
         let type = state.get('type');
-        return Cpanel.List.branchForBackupRestore(type);
+        return Korben.List.branchForBackupRestore(type);
     }
 });
 
-Template.Cpanel_backup.events({
+Template.Korben_backup.events({
     'change [name="module"]': function (e, t) {
         let module = $(e.currentTarget).val();
         state.set('module', module);
@@ -41,7 +41,7 @@ Template.Cpanel_backup.events({
 
 // Hook
 AutoForm.hooks({
-    Cpanel_backup: {
+    Korben_backup: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             this.event.preventDefault();
 
@@ -90,27 +90,27 @@ AutoForm.hooks({
  */
 var restoreWaiting = new ReactiveVar(false);
 
-Template.Cpanel_restore.onCreated(function () {
+Template.Korben_restore.onCreated(function () {
     let self = this;
     self.autorun(function () {
         let currentUser = Meteor.user();
         if(currentUser && currentUser.rolesBranch){
-            self.subscribe('Cpanel.branch', {_id: {$in: currentUser.rolesBranch}});
+            self.subscribe('Korben.branch', {_id: {$in: currentUser.rolesBranch}});
         }
     });
 });
 
-Template.Cpanel_restore.helpers({
+Template.Korben_restore.helpers({
     restoreWaiting: function () {
         return restoreWaiting.get();
     },
     type: function () {
         let module = state.get('module');
-        return Cpanel.List.typeForBackupRestore(module);
+        return Korben.List.typeForBackupRestore(module);
     },
     branch: function () {
         let type = state.get('type');
-        return Cpanel.List.branchForBackupRestore(type);
+        return Korben.List.branchForBackupRestore(type);
     },
     dropCollections: function () {
         let value = false;
@@ -154,7 +154,7 @@ Template.Cpanel_restore.helpers({
     }
 });
 
-Template.Cpanel_restore.events({
+Template.Korben_restore.events({
     'change [name="module"]': function (e, t) {
         let module = $(e.currentTarget).val();
         state.set('module', module);
@@ -171,14 +171,14 @@ Template.Cpanel_restore.events({
 
 // Hook
 AutoForm.hooks({
-    Cpanel_restore: {
+    Korben_restore: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             var self = this;
             self.event.preventDefault();
             restoreWaiting.set(true);
 
             var formData, $form;
-            $form = $('#Cpanel_restore');
+            $form = $('#Korben_restore');
             formData = new FormData($form[0]);
 
             var restoreFile = insertDoc.restoreFile;
@@ -215,7 +215,7 @@ AutoForm.hooks({
                 console.log(data);
                 restoreWaiting.set(false);
                 Meteor.logout();
-                FlowRouter.go('cpanel.welcome');
+                FlowRouter.go('korben.welcome');
                 alertify.success('Restore is successful');
                 self.done();
                 return false;

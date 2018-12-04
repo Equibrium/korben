@@ -21,9 +21,9 @@ If you have a group of related images that you would like to combine into a set,
 please use the same name
 
 ```js
-{{lightbox url="img-url" name="rabbit" title="img-title"}}
-{{lightbox url="img-url" name="rabbit" title="img-title"}}
-{{lightbox url="img-url" name="rabbit" title="img-title"}}
+{{lightbox url="img-url" name="korben" title="img-title"}}
+{{lightbox url="img-url" name="korben" title="img-title"}}
+{{lightbox url="img-url" name="korben" title="img-title"}}
 ```
 
 ### Changelog

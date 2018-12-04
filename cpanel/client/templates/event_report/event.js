@@ -1,6 +1,6 @@
 // Declare template
-var formTpl = Template.Cpanel_eventReport,
-    genTpl = Template.Cpanel_eventReportGen;
+var formTpl = Template.Korben_eventReport,
+    genTpl = Template.Korben_eventReportGen;
 
 // Form
 formTpl.onCreated(function () {
@@ -11,7 +11,7 @@ formTpl.onRendered(function () {
 
 // Hook
 AutoForm.hooks({
-    Cpanel_eventReport: {
+    Korben_eventReport: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             this.event.preventDefault();
 
@@ -24,7 +24,7 @@ AutoForm.hooks({
         onSuccess: function (formType, result) {
             var params = {};
             var queryParams = result;
-            var path = FlowRouter.path("cpanel.eventReportGen", params, queryParams);
+            var path = FlowRouter.path("korben.eventReportGen", params, queryParams);
 
             window.open(path, '_blank');
         },

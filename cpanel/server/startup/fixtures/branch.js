@@ -1,6 +1,6 @@
 Meteor.startup(function () {
-    if (Cpanel.Collection.Branch.find().count() == 0) {
-        Cpanel.Collection.Branch.insert(
+    if (Korben.Collection.Branch.find().count() == 0) {
+        Korben.Collection.Branch.insert(
             {
                 _id: '001',
                 khName: 'បាត់ដំបង',

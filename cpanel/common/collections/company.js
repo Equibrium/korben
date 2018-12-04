@@ -1,12 +1,12 @@
 /**
  * Collection
  */
-Cpanel.Collection.Company = new Mongo.Collection("cpanel_company");
+Korben.Collection.Company = new Mongo.Collection("korben_company");
 
 /**
  * Schema
  */
-Cpanel.Schema.Company = new SimpleSchema({
+Korben.Schema.Company = new SimpleSchema({
     khName: {
         type: String,
         label: "Kh name",
@@ -59,4 +59,4 @@ Cpanel.Schema.Company = new SimpleSchema({
 /**
  * Attach schema
  */
-Cpanel.Collection.Company.attachSchema(Cpanel.Schema.Company);
+Korben.Collection.Company.attachSchema(Korben.Schema.Company);

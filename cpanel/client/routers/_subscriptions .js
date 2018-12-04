@@ -1,14 +1,14 @@
 FlowRouter.subscriptions = function () {
     // User
-    this.register('Cpanel.currentUser', Meteor.subscribe('Cpanel.currentUser'));
+    this.register('Korben.currentUser', Meteor.subscribe('Korben.currentUser'));
     // Currency
-    this.register('cpanel_currency', Meteor.subscribe('cpanel_currency'));
+    this.register('korben_currency', Meteor.subscribe('korben_currency'));
     // Setting
-    this.register('Cpanel.setting', Meteor.subscribe('Cpanel.setting'));
+    this.register('Korben.setting', Meteor.subscribe('Korben.setting'));
     // Company
-    this.register('Cpanel.company', Meteor.subscribe('Cpanel.company'));
+    this.register('Korben.company', Meteor.subscribe('Korben.company'));
     // Branch
-    // this.register('cpanel_branch', Meteor.subscribe('cpanel_branch'));
+    // this.register('korben_branch', Meteor.subscribe('korben_branch'));
 
     // Files upload
     this.register('files', Meteor.subscribe('files'));

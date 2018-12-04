@@ -4,9 +4,9 @@ FlowRouter.triggers.enter([
         let currentBranch = Session.get('currentBranch');
 
         if (!Meteor.userId() || !currentModule || !currentBranch) {
-            FlowRouter.go('cpanel.welcome');
+            FlowRouter.go('korben.welcome');
         }
     }
 ], {
-    except: ["cpanel.welcome"]
+    except: ["korben.welcome"]
 });

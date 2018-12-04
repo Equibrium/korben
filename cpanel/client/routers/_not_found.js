@@ -1,5 +1,5 @@
 FlowRouter.notFound = {
-    name: 'cpanel.notFound',
+    name: 'korben.notFound',
     title: '404: Page not found',
     action: function () {
         Layout.main('notFound');
@@ -8,6 +8,6 @@ FlowRouter.notFound = {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: 'Not Found',
-        parent: 'cpanel.welcome'
+        parent: 'korben.welcome'
     }
 };

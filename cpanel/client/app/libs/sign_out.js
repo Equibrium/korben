@@ -4,7 +4,7 @@ SignOut = function () {
             // Clear Session
             Session.clearPersistent();
             
-            FlowRouter.go('cpanel.welcome');
+            FlowRouter.go('korben.welcome');
             Bert.alert({
                 // title: 'Success',
                 message: 'You are sign out',

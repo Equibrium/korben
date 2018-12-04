@@ -1,9 +1,9 @@
-// var module = 'Cpanel';
+// var module = 'Korben';
 
 Meteor.methods({
     userInsert: function (doc) {
         check(doc, Object);
-        if (!Roles.userIsInRole(this.userId, ['super', 'admin'], 'Cpanel')) {
+        if (!Roles.userIsInRole(this.userId, ['super', 'admin'], 'Korben')) {
             throw new Meteor.Error("403", "Access denied");
         }
 
@@ -49,7 +49,7 @@ Meteor.methods({
         check(id, String);
         check(doc, Object);
 
-        if (!Roles.userIsInRole(this.userId, ['super', 'admin'], 'Cpanel')) {
+        if (!Roles.userIsInRole(this.userId, ['super', 'admin'], 'Korben')) {
             throw new Meteor.Error("403", "Access denied");
         }
 
@@ -105,7 +105,7 @@ Meteor.methods({
     userRemove: function (id) {
         check(id, String);
 
-        if (!Roles.userIsInRole(this.userId, ['super', 'admin'], 'Cpanel')) {
+        if (!Roles.userIsInRole(this.userId, ['super', 'admin'], 'Korben')) {
             throw new Meteor.Error("403", "Access denied");
         }
 

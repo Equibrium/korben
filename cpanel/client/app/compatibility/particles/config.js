@@ -22,7 +22,7 @@ pJSConfig = {
                 "nb_sides": 5
             },
             "image": {
-                "src": "/rabbit-particles.png",
+                "src": "/korben-particles.png",
                 "width": 100,
                 "height": 100
             }

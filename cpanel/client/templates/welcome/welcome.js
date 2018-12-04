@@ -1,9 +1,9 @@
 /**
  * Declare template
  */
-var indexTpl = Template.Cpanel_welcome,
-    loginTpl = Template.Cpanel_welcomeLogin,
-    configTpl = Template.Cpanel_welcomeConfig;
+var indexTpl = Template.Korben_welcome,
+    loginTpl = Template.Korben_welcomeLogin,
+    configTpl = Template.Korben_welcomeConfig;
 
 /**
  * Index
@@ -24,7 +24,7 @@ indexTpl.helpers({
  */
 // Hook
 AutoForm.hooks({
-    Cpanel_welcomeLogin: {
+    Korben_welcomeLogin: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             this.event.preventDefault();
             this.done(null, insertDoc);
@@ -64,7 +64,7 @@ configTpl.onCreated(function () {
     self.autorun(function () {
         let currentUser = Meteor.user();
         if (currentUser && currentUser.rolesBranch) {
-            self.subscribe('Cpanel.branch', {_id: {$in: currentUser.rolesBranch}});
+            self.subscribe('Korben.branch', {_id: {$in: currentUser.rolesBranch}});
         }
     });
 
@@ -78,7 +78,7 @@ configTpl.events({
 
 // Hook
 AutoForm.hooks({
-    Cpanel_welcomeConfig: {
+    Korben_welcomeConfig: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             this.event.preventDefault();
             this.done(null, insertDoc);

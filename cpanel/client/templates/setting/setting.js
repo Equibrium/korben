@@ -1,23 +1,23 @@
 // Declare template
-var indexTpl = Template.Cpanel_setting;
+var indexTpl = Template.Korben_setting;
 
 // Index
 indexTpl.onCreated(function () {
     let self = this;
     self.autorun(function () {
-        self.subscribe('Cpanel.branch', {});
+        self.subscribe('Korben.branch', {});
     });
 });
 
 indexTpl.helpers({
     data: function () {
-        return Cpanel.Collection.Setting.findOne();
+        return Korben.Collection.Setting.findOne();
     }
 });
 
 // Hook
 AutoForm.hooks({
-    Cpanel_setting: {
+    Korben_setting: {
         onSuccess: function (formType, result) {
             Bert.alert({
                 message: 'Success',

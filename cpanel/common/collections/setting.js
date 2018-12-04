@@ -1,18 +1,18 @@
 /**
  * Collection
  */
-Cpanel.Collection.Setting = new Mongo.Collection("cpanel_setting");
+Korben.Collection.Setting = new Mongo.Collection("korben_setting");
 
 /**
  * Schema
  */
-Cpanel.Schema.Setting = new SimpleSchema({
+Korben.Schema.Setting = new SimpleSchema({
     headOffice: {
         type: String,
         autoform: {
             type: "select2",
             options: function () {
-                return Cpanel.List.branch();
+                return Korben.List.branch();
             }
         }
     },
@@ -21,7 +21,7 @@ Cpanel.Schema.Setting = new SimpleSchema({
         autoform: {
             type: "select2",
             options: function () {
-                return Cpanel.List.currency();
+                return Korben.List.currency();
             }
         }
     }
@@ -30,4 +30,4 @@ Cpanel.Schema.Setting = new SimpleSchema({
 /**
  * Attach schema
  */
-Cpanel.Collection.Setting.attachSchema(Cpanel.Schema.Setting);
+Korben.Collection.Setting.attachSchema(Korben.Schema.Setting);

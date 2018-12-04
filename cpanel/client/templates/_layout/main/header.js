@@ -10,7 +10,7 @@ Template._headerLayout.helpers({
             return Module[moduleWord[0]].name;
         }
 
-        return 'Rabbit Tech';
+        return 'Korben Tech';
     },
     headerMenu: function () {
         var currentModule = Session.get('currentModule');

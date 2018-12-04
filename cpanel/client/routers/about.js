@@ -1,13 +1,13 @@
-cpanelRoutes.route('/about', {
-    name: 'cpanel.about',
+korbenRoutes.route('/about', {
+    name: 'korben.about',
     title: 'About',
     action: function (params, queryParams) {
-        Layout.main('Cpanel_about');
+        Layout.main('Korben_about');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: 'About',
-        parent: 'cpanel.welcome'
+        parent: 'korben.welcome'
     }
 });

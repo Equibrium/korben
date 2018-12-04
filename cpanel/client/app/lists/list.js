@@ -1,11 +1,11 @@
 /**
  * List
  */
-Cpanel.List = {
+Korben.List = {
     currency: function () {
         var list = [{label: "(Select One)", value: ""}];
 
-        Cpanel.Collection.Currency.find()
+        Korben.Collection.Currency.find()
             .forEach(function (obj) {
                 list.push({label: obj._id + ' (' + obj.num + ')', value: obj._id})
             });
@@ -18,7 +18,7 @@ Cpanel.List = {
         _.each(Module, function (val, key) {
             var options = [];
             _.each(Module[key].roles, function (roleVal) {
-                if (!(key == 'Cpanel' && roleVal == 'super')) {
+                if (!(key == 'Korben' && roleVal == 'super')) {
                     options.push({label: roleVal, value: key + ':' + roleVal});
                 }
             });
@@ -49,7 +49,7 @@ Cpanel.List = {
             list.push({label: "(Select One)", value: ""});
         }
 
-        Cpanel.Collection.Branch.find()
+        Korben.Collection.Branch.find()
             .forEach(function (obj) {
                 list.push({label: obj.enName, value: obj._id});
             });
@@ -64,7 +64,7 @@ Cpanel.List = {
         var currentUser = Meteor.users.findOne(userIdVal);
         if (currentUser && currentUser.rolesBranch) {
             let rolesBranch = currentUser.rolesBranch;
-            var branches = Cpanel.Collection.Branch.find({_id: {$in: rolesBranch}}, {sort: {_id: 1}});
+            var branches = Korben.Collection.Branch.find({_id: {$in: rolesBranch}}, {sort: {_id: 1}});
             branches.forEach(function (branch) {
                 list.push({label: branch.enName, value: branch._id});
             });
@@ -81,7 +81,7 @@ Cpanel.List = {
         if (currentUser && currentUser.rolesBranch) {
             let rolesBranch = currentUser.rolesBranch;
             _.each(rolesBranch, function (branch) {
-                var label = Cpanel.Collection.Branch.findOne(branch);
+                var label = Korben.Collection.Branch.findOne(branch);
                 if (label && label.enName) {
                     list.push({label: label.enName, value: branch});
                 }
@@ -96,7 +96,7 @@ Cpanel.List = {
             list = [];
         list.push({label: "(Select One)", value: ""});
 
-        if (currentModule == 'Cpanel') {
+        if (currentModule == 'Korben') {
             list.push({label: "- All -", value: "All"});
             Roles.getGroupsForUser(userId)
                 .forEach(function (group) {
@@ -114,7 +114,7 @@ Cpanel.List = {
         let list = [];
 
         if (!_.isEmpty(module)) {
-            if (module == 'All' || module == 'Cpanel') {
+            if (module == 'All' || module == 'Korben') {
                 list.push({label: '- All -', value: 'all'});
             } else {
                 //list.push({label: '- All -', value: 'all'});
@@ -139,7 +139,7 @@ Cpanel.List = {
             } else {
                 if (Meteor.user() && Meteor.user().rolesBranch) {
                     _.each(Meteor.user().rolesBranch, function (branch) {
-                        let getBranch = Cpanel.Collection.Branch.findOne(branch);
+                        let getBranch = Korben.Collection.Branch.findOne(branch);
                         list.push({label: getBranch.enName, value: getBranch._id});
                     });
                 }

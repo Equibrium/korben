@@ -1,8 +1,8 @@
 // Declare template
-let indexTpl = Template.Cpanel_exchange,
-    newTpl = Template.Cpanel_exchangeNew,
-    editTpl = Template.Cpanel_exchangeEdit,
-    showTpl = Template.Cpanel_exchangeShow;
+let indexTpl = Template.Korben_exchange,
+    newTpl = Template.Korben_exchangeNew,
+    editTpl = Template.Korben_exchangeEdit,
+    showTpl = Template.Korben_exchangeShow;
 
 // Index
 indexTpl.onCreated(function () {
@@ -19,7 +19,7 @@ indexTpl.events({
     },
     'click .js-destroy' (e, t) {
         destroyAction(
-            Cpanel.Collection.Exchange,
+            Korben.Collection.Exchange,
             {_id: this._id},
             {title: 'Exchange', item: moment(self.exDate).format('DD/MM/YYYY')}
         );
@@ -33,7 +33,7 @@ indexTpl.events({
 newTpl.helpers({
     doc () {
         let khr = 0, usd = 0, thb = 0;
-        let baseCurrency = Cpanel.Collection.Setting.findOne().baseCurrency;
+        let baseCurrency = Korben.Collection.Setting.findOne().baseCurrency;
 
         if (baseCurrency == 'KHR') {
             khr = 1;
@@ -51,13 +51,13 @@ newTpl.helpers({
 editTpl.onCreated(function () {
     let self = this;
     self.autorun(function () {
-        self.subscribe('Cpanel.exchange', {_id: self.data._id});
+        self.subscribe('Korben.exchange', {_id: self.data._id});
     });
 });
 
 editTpl.helpers({
     data () {
-        let data = Cpanel.Collection.Exchange.findOne(this._id);
+        let data = Korben.Collection.Exchange.findOne(this._id);
         return data;
     }
 });
@@ -66,13 +66,13 @@ editTpl.helpers({
 showTpl.onCreated(function () {
     let self = this;
     self.autorun(function () {
-        self.subscribe('Cpanel.exchange', {_id: self.data._id});
+        self.subscribe('Korben.exchange', {_id: self.data._id});
     });
 });
 
 showTpl.helpers({
     data () {
-        let data = Cpanel.Collection.Exchange.findOne(this._id);
+        let data = Korben.Collection.Exchange.findOne(this._id);
         data.ratesVal = JSON.stringify(data.rates);
         return data;
     }
@@ -80,7 +80,7 @@ showTpl.helpers({
 
 // Hook
 AutoForm.hooks({
-    Cpanel_exchangeNew: {
+    Korben_exchangeNew: {
         onSuccess: function (formType, result) {
             alertify.exchange().close();
             Bert.alert({
@@ -95,7 +95,7 @@ AutoForm.hooks({
             });
         }
     },
-    Cpanel_exchangeEdit: {
+    Korben_exchangeEdit: {
         onSuccess: function (formType, error) {
             alertify.exchange().close();
             Bert.alert({

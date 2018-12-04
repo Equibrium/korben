@@ -1,7 +1,7 @@
 // Declare template
-var indexTpl = Template.Cpanel_userProfile,
-    editTpl = Template.Cpanel_userProfileEdit,
-    passwordTpl = Template.Cpanel_userChangePassword;
+var indexTpl = Template.Korben_userProfile,
+    editTpl = Template.Korben_userProfileEdit,
+    passwordTpl = Template.Korben_userChangePassword;
 
 // Index
 indexTpl.onCreated(function () {
@@ -70,7 +70,7 @@ editTpl.helpers({
 
 // Hook
 AutoForm.hooks({
-    Cpanel_userProfileEdit: {
+    Korben_userProfileEdit: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             let self = this;
             self.event.preventDefault();
@@ -96,7 +96,7 @@ AutoForm.hooks({
             });
         }
     },
-    Cpanel_userChangePassword: {
+    Korben_userChangePassword: {
         onSubmit: function (insertDoc, updateDoc, currentDoc) {
             this.event.preventDefault();
             this.done(null, insertDoc);

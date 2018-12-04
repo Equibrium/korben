@@ -1,9 +1,9 @@
 /**
  * Company
  */
-// var module = 'Cpanel';
+// var module = 'Korben';
 //
-// Cpanel.Collection.Company.after.update(function (userId, doc, fieldNames, modifier, options) {
+// Korben.Collection.Company.after.update(function (userId, doc, fieldNames, modifier, options) {
 //     Events.trackUpdate({
 //         description: modifier,
 //         module: module

@@ -1,15 +1,15 @@
 /**
  * Namespace
  */
-Cpanel = {};
+Korben = {};
 
-Meteor.isClient && Template.registerHelper('Cpanel', Cpanel);
+Meteor.isClient && Template.registerHelper('Korben', Korben);
 
 /* Collection */
-Cpanel.Collection = {};
+Korben.Collection = {};
 
 /* Schema */
-Cpanel.Schema = {};
+Korben.Schema = {};
 
 /* Tabular */
-Cpanel.TabularTable = {};
+Korben.TabularTable = {};

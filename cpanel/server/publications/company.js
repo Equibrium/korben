@@ -1,10 +1,10 @@
 /*
  Company
  */
-Meteor.publish('Cpanel.company', function () {
+Meteor.publish('Korben.company', function () {
     this.unblock();
     if (this.userId) {
-        let data = Cpanel.Collection.Company.find();
+        let data = Korben.Collection.Company.find();
         return data;
     }
 

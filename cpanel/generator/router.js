@@ -1,8 +1,8 @@
 if (Meteor.isClient) {
-    cpanelRoutes.route('/generator', {
-        name: 'cpanel.generator',
+    korbenRoutes.route('/generator', {
+        name: 'korben.generator',
         action: function (params, queryParams) {
-            Layout.generator('cpanel_generator');
+            Layout.generator('korben_generator');
         }
     });
 }

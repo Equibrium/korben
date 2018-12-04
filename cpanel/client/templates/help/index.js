@@ -1,10 +1,10 @@
 // Declare template
-var indexTpl = Template.Cpanel_help;
+var indexTpl = Template.Korben_help;
 
 indexTpl.onCreated(function () {
     // SEO
     SEO.set({
-        title: 'Cpanel Help',
+        title: 'Korben Help',
         description: 'Description for this page'
     });
 });

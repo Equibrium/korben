@@ -1,5 +1,5 @@
-# Meteor Cpanel
-Meteor Cpanel for Rabbit Training Center.
+# Meteor Korben
+Meteor Korben for Korben Training Center.
 
 ## v.Next
 - add sample events track on report

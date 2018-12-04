@@ -1,14 +1,14 @@
 <!--Index-->
-<template name="Cpanel_user">
+<template name="Korben_user">
     <p>
         <button type="button" class="btn btn-primary js-new">{{fa "plus"}} New</button>
     </p>
 
-    {{> tabular table=Cpanel.TabularTable.User class="table table-striped table-bordered table-condensed table-hover"}}
+    {{> tabular table=Korben.TabularTable.User class="table table-striped table-bordered table-condensed table-hover"}}
 </template>
 
 <!--Action-->
-<template name="Cpanel_userAction">
+<template name="Korben_userAction">
     {{#tabularAction}}
         <li><a href="#" class="js-update">{{fa "pencil"}} Edit</a></li>
         <li><a href="#" class="js-destroy">{{fa "remove"}} Delete</a></li>
@@ -17,9 +17,9 @@
 </template>
 
 <!--New-->
-<template name="Cpanel_userNew">
+<template name="Korben_userNew">
     {{#if templateSubsReady}}
-        {{#autoForm schema=Cpanel.Schema.User id="Cpanel_userNew"}}
+        {{#autoForm schema=Korben.Schema.User id="Korben_userNew"}}
             <div class="row">
                 <div class="col-xs-6">
                     {{> afQuickField name='username'}}
@@ -42,9 +42,9 @@
 </template>
 
 <!--Edit-->
-<template name="Cpanel_userEdit">
+<template name="Korben_userEdit">
     {{#if templateSubsReady}}
-        {{#autoForm schema=Cpanel.Schema.User id="Cpanel_userEdit" doc=data}}
+        {{#autoForm schema=Korben.Schema.User id="Korben_userEdit" doc=data}}
             <div class="row">
                 <div class="col-xs-6">
                     {{> afQuickField name='username'}}
@@ -67,7 +67,7 @@
 </template>
 
 <!--Show-->
-<template name="Cpanel_userShow">
+<template name="Korben_userShow">
     {{#if templateSubsReady}}
         {{#with data}}
             <dl class="dl-horizontal">

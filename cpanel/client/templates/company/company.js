@@ -1,6 +1,6 @@
 // Declare template
-var indexTpl = Template.Cpanel_company,
-    editTpl = Template.Cpanel_companyEdit;
+var indexTpl = Template.Korben_company,
+    editTpl = Template.Korben_companyEdit;
 
 // Index
 indexTpl.onCreated(function () {
@@ -10,7 +10,7 @@ indexTpl.onCreated(function () {
 
 indexTpl.helpers({
     data () {
-        return Cpanel.Collection.Company.findOne();
+        return Korben.Collection.Company.findOne();
     }
 });
 
@@ -23,14 +23,14 @@ indexTpl.events({
 // Edit
 editTpl.helpers({
     data () {
-        let data = Cpanel.Collection.Company.findOne(this._id);
+        let data = Korben.Collection.Company.findOne(this._id);
         return data;
     }
 });
 
 // Hook
 AutoForm.hooks({
-    Cpanel_companyEdit: {
+    Korben_companyEdit: {
         onSuccess: function (formType, result) {
             alertify.company().close();
             alertify.success('Success');

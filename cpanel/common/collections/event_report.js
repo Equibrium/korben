@@ -1,14 +1,14 @@
 /**
  * Schema
  */
-Cpanel.Schema.EventReport = new SimpleSchema({
+Korben.Schema.EventReport = new SimpleSchema({
     user: {
         type: String,
         label: "User",
         autoform: {
             type: "select2",
             options: function () {
-                return Cpanel.ListForReport.user();
+                return Korben.ListForReport.user();
             }
         }
     },
@@ -18,7 +18,7 @@ Cpanel.Schema.EventReport = new SimpleSchema({
         autoform: {
             type: "select2",
             options: function () {
-                return Cpanel.ListForReport.type();
+                return Korben.ListForReport.type();
             }
         },
         optional: true
@@ -29,7 +29,7 @@ Cpanel.Schema.EventReport = new SimpleSchema({
         autoform: {
             type: "select2",
             options: function () {
-                return Cpanel.ListForReport.module();
+                return Korben.ListForReport.module();
             }
         },
         optional: true
@@ -40,7 +40,7 @@ Cpanel.Schema.EventReport = new SimpleSchema({
         autoform: {
             type: "select2",
             options: function () {
-                return Cpanel.ListForReport.branch();
+                return Korben.ListForReport.branch();
             }
         },
         optional: true

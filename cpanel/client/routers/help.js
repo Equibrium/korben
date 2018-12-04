@@ -1,5 +1,5 @@
-cpanelRoutes.route('/help', {
-    name: 'cpanel.help',
+korbenRoutes.route('/help', {
+    name: 'korben.help',
     title: 'Help',
     action: function (params, queryParams) {
         var currentModule = Session.get('currentModule');

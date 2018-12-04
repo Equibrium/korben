@@ -1,13 +1,13 @@
-<template name="cpanel_generator">
+<template name="korben_generator">
 
-    {{> cpanel_generatorModule}}
+    {{> korben_generatorModule}}
 
-    {{> cpanel_generatorCRUD}}
+    {{> korben_generatorCRUD}}
 
 </template>
 
 <!--Module-->
-<template name="cpanel_generatorModule">
+<template name="korben_generatorModule">
     <h3>Module</h3>
 
     <div class="jumbotron">
@@ -16,7 +16,7 @@
             {{> loading}}
         {{/if}}
 
-        {{#autoForm schema=Cpanel.Schema.GeneratorModule id="cpanel_generatorModule"}}
+        {{#autoForm schema=Korben.Schema.GeneratorModule id="korben_generatorModule"}}
             <div class="row">
                 <div class="col-md-12">
                     {{> afQuickField name="moduleName"}}
@@ -29,11 +29,11 @@
     </div>
 </template>
 
-<template name="cpanel_generatorCRUD">
+<template name="korben_generatorCRUD">
     <h3>CRUD</h3>
 
     <div class="jumbotron">
-        {{#autoForm schema=Cpanel.Schema.GeneratorCRUD id="cpanel_generatorCRUD"}}
+        {{#autoForm schema=Korben.Schema.GeneratorCRUD id="korben_generatorCRUD"}}
             <div class="row">
                 <div class="col-md-12">
                     {{> afQuickField name="moduleName"}}

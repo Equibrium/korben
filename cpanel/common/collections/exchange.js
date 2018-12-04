@@ -1,7 +1,7 @@
 /**
  * Collection
  */
-Cpanel.Collection.Exchange = new Mongo.Collection("cpanel_exchange");
+Korben.Collection.Exchange = new Mongo.Collection("korben_exchange");
 
 /**
  * Schema
@@ -42,7 +42,7 @@ var Rates = new SimpleSchema({
     }
 });
 
-Cpanel.Schema.Exchange = new SimpleSchema({
+Korben.Schema.Exchange = new SimpleSchema({
     exDate: {
         type: Date,
         label: "Date",
@@ -70,4 +70,4 @@ Cpanel.Schema.Exchange = new SimpleSchema({
 /**
  * Attach schema
  */
-Cpanel.Collection.Exchange.attachSchema(Cpanel.Schema.Exchange);
+Korben.Collection.Exchange.attachSchema(Korben.Schema.Exchange);

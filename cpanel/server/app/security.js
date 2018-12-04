@@ -1,32 +1,32 @@
 /**
  * Super
  */
-Security.defineMethod("cpanel_ifSuper", {
+Security.defineMethod("korben_ifSuper", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['super'], 'Cpanel');
+        return !Roles.userIsInRole(userId, ['super'], 'Korben');
     }
 });
 
 /**
  * Admin
  */
-Security.defineMethod("cpanel_ifAdmin", {
+Security.defineMethod("korben_ifAdmin", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['admin'], 'Cpanel');
+        return !Roles.userIsInRole(userId, ['admin'], 'Korben');
     }
 });
 
 /**
  * Super or admin
  */
-Security.defineMethod("cpanel_ifSuperOrAdmin", {
+Security.defineMethod("korben_ifSuperOrAdmin", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['super', 'admin'], 'Cpanel');
+        return !Roles.userIsInRole(userId, ['super', 'admin'], 'Korben');
     }
 });

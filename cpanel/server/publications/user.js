@@ -1,7 +1,7 @@
 /*
  User
  */
-Meteor.publish('Cpanel.user', function (selector = {}, options = {}) {
+Meteor.publish('Korben.user', function (selector = {}, options = {}) {
     this.unblock();
     if (this.userId) {
         check(selector, Object);
@@ -15,7 +15,7 @@ Meteor.publish('Cpanel.user', function (selector = {}, options = {}) {
     this.ready();
 });
 
-Meteor.publish('Cpanel.currentUser', function () {
+Meteor.publish('Korben.currentUser', function () {
     this.unblock();
     if (this.userId) {
         let data = Meteor.users.find(this.userId);

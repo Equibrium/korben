@@ -1,5 +1,5 @@
 // Declare template
-var indexTpl = Template.Cpanel_home;
+var indexTpl = Template.Korben_home;
 
 indexTpl.onCreated(function () {
 });

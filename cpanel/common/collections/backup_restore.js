@@ -1,7 +1,7 @@
 /**
  * Schema
  */
-Cpanel.Schema.Backup = new SimpleSchema({
+Korben.Schema.Backup = new SimpleSchema({
     token: {
         type: String,
         optional: true,
@@ -15,7 +15,7 @@ Cpanel.Schema.Backup = new SimpleSchema({
         autoform: {
             type: 'select2',
             options: function () {
-                return Cpanel.List.moduleForBackupRestore();
+                return Korben.List.moduleForBackupRestore();
             }
         }
     },
@@ -35,7 +35,7 @@ Cpanel.Schema.Backup = new SimpleSchema({
     }
 });
 
-Cpanel.Schema.Restore = new SimpleSchema({
+Korben.Schema.Restore = new SimpleSchema({
     token: {
         type: String,
         optional: true,
@@ -49,7 +49,7 @@ Cpanel.Schema.Restore = new SimpleSchema({
         autoform: {
             type: 'select2',
             options: function () {
-                return Cpanel.List.moduleForBackupRestore();
+                return Korben.List.moduleForBackupRestore();
             }
         }
     },

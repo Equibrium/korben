@@ -1,6 +1,6 @@
-Cpanel.TabularTable.Branch = new Tabular.Table({
-    name: "cpanelBranchList",
-    collection: Cpanel.Collection.Branch,
+Korben.TabularTable.Branch = new Tabular.Table({
+    name: "korbenBranchList",
+    collection: Korben.Collection.Branch,
     pagingType: "full_numbers",
     autoWidth: false,
     columnDefs: [
@@ -8,12 +8,12 @@ Cpanel.TabularTable.Branch = new Tabular.Table({
     ],
     order: [['1', 'desc']],
     columns: [
-        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Cpanel_branchAction},
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Korben_branchAction},
         {
             data: "_id",
             title: "ID",
             render: function (val, type, doc) {
-                var setting = Cpanel.Collection.Setting.findOne();
+                var setting = Korben.Collection.Setting.findOne();
 
                 if (val != setting.headOffice) {
                     return val;

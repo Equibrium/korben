@@ -1,21 +1,21 @@
-cpanelRoutes.route('/eventReport', {
-    name: 'cpanel.eventReport',
+korbenRoutes.route('/eventReport', {
+    name: 'korben.eventReport',
     title: 'Event Report',
     action: function (params, queryParams) {
-        Layout.main('Cpanel_eventReport');
+        Layout.main('Korben_eventReport');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: 'Event Report',
-        parent: 'cpanel.welcome'
+        parent: 'korben.welcome'
     }
 });
 
-cpanelRoutes.route('/eventReportGen', {
-    name: 'cpanel.eventReportGen',
+korbenRoutes.route('/eventReportGen', {
+    name: 'korben.eventReportGen',
     title: 'Event Report',
     action: function (params, queryParams) {
-        Layout.report('Cpanel_eventReportGen');
+        Layout.report('Korben_eventReportGen');
     }
 });

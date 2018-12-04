@@ -4,21 +4,21 @@ Meteor.startup(function () {
         var superId = Accounts.createUser(
             {
                 username: 'super',
-                email: 'super@rabbit.com',
+                email: 'super@korben.com',
                 password: 'super123',
                 profile: {
                     name: 'Super'
                 }
             }
         );
-        Roles.addUsersToRoles(superId, ['super'], 'Cpanel');
+        Roles.addUsersToRoles(superId, ['super'], 'Korben');
         Meteor.users.update({_id: superId}, {$set: {rolesBranch: ['001']}});
 
         // Insert admin
         var adminId = Accounts.createUser(
             {
                 username: 'admin',
-                email: 'admin@rabbit.com',
+                email: 'admin@korben.com',
                 password: 'admin123',
                 profile: {
                     name: 'Admin'

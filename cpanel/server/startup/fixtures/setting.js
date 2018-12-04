@@ -1,6 +1,6 @@
 Meteor.startup(function () {
-    if (Cpanel.Collection.Setting.find().count() == 0) {
-        Cpanel.Collection.Setting.insert(
+    if (Korben.Collection.Setting.find().count() == 0) {
+        Korben.Collection.Setting.insert(
             {
                 headOffice: '001',
                 baseCurrency: 'USD'

@@ -37,7 +37,7 @@
 
 // accountsUIBootstrap3.logoutCallback = function (error) {
 //     if (!error) {
-//         FlowRouter.go('cpanel.welcome');
+//         FlowRouter.go('korben.welcome');
 //
 //         // Events user logout
 //         // Events.track({

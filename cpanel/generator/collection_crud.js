@@ -1,5 +1,5 @@
 // Schema
-Cpanel.Schema.GeneratorCRUD = new SimpleSchema({
+Korben.Schema.GeneratorCRUD = new SimpleSchema({
     moduleName: {
         type: String,
         label: 'Module name',
@@ -46,7 +46,7 @@ if (Meteor.isClient) {
             list.push({label: '(Select One)', value: ''});
 
             _.forEach(Module, function (val, key) {
-                if (key != 'Cpanel') {
+                if (key != 'Korben') {
                     list.push({label: key, value: key});
                 }
             });

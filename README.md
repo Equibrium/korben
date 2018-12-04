@@ -1,12 +1,12 @@
-# Cpanel For Meteor JS
-Cpanel for Rabbit Training Center.
+# Korben For Meteor JS
+Korben for Korben Training Center.
 
 ## Usage
-- Copy the sample module and rename `rabbit`
+- Copy the sample module and rename `korben`
 
 ```js
 // Structure
-|- rabbit
+|- korben
     |- client
         |- app   // other file or libraries load first on client
             |- compatibility // 3th parties library
@@ -64,17 +64,17 @@ Cpanel for Rabbit Training Center.
             startup.js
 ```
 
-- Config new module and set roles in `rabbit/common/lib/config/module.js`
+- Config new module and set roles in `korben/common/lib/config/module.js`
 
 ```js
 // Module
 Module = typeof Module === 'undefined' ? {} : Module;
 Meteor.isClient && Template.registerHelper('Module', Module);
 
-Module.Rabbit = {
-    name: 'Rabbit Project',
+Module.Korben = {
+    name: 'Korben Project',
     version: '0.0.1',
-    summary: 'Rabbit Management System is ...',
+    summary: 'Korben Management System is ...',
     roles: [
         'admin',
         'general',
@@ -83,93 +83,93 @@ Module.Rabbit = {
 };
 ```
 
-- Config namespace in `rabbit/common/lib/config/namespace.js` to use collection, schema, tabular and other libraries
+- Config namespace in `korben/common/lib/config/namespace.js` to use collection, schema, tabular and other libraries
 
 ```js
 // Namespace
-Rabbit = {};
+Korben = {};
 
-Meteor.isClient && Template.registerHelper('Rabbit', Rabbit);
+Meteor.isClient && Template.registerHelper('Korben', Korben);
 
 /* Collection */
-Rabbit.Collection = {};
+Korben.Collection = {};
 
 /* Schema */
-Rabbit.Schema = {};
+Korben.Schema = {};
 
 /* Tabular */
-Rabbit.TabularTable = {};
+Korben.TabularTable = {};
 ```
 
-- Create security method in `rabbit/server/app/security.js`
+- Create security method in `korben/server/app/security.js`
 
 ```js
 // Admin
-Security.defineMethod("rabbit_ifAdmin", {
+Security.defineMethod("korben_ifAdmin", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['admin'], 'Rabbit');
+        return !Roles.userIsInRole(userId, ['admin'], 'Korben');
     }
 });
 
 // General
-Security.defineMethod("rabbit_ifGeneral", {
+Security.defineMethod("korben_ifGeneral", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['general'], 'Rabbit');
+        return !Roles.userIsInRole(userId, ['general'], 'Korben');
     }
 });
 
 // Reporter
-Security.defineMethod("rabbit_ifReporter", {
+Security.defineMethod("korben_ifReporter", {
     fetch: [],
     transform: null,
     deny: function (type, arg, userId) {
-        return !Roles.userIsInRole(userId, ['reporter'], 'Rabbit');
+        return !Roles.userIsInRole(userId, ['reporter'], 'Korben');
     }
 });
 ```
 
 - Create home page (router, template)
-- Config menu bar in `rabbit/client/templates/_layout/navbar.html, navbar_right.html`
+- Config menu bar in `korben/client/templates/_layout/navbar.html, navbar_right.html`
 
 ```js
-<template name="rabbit_navbar">
-    <li class="{{isActiveRoute name='rabbit.home'}}">
-        <a href="{{pathFor 'rabbit.home'}}">Home</a>
+<template name="korben_navbar">
+    <li class="{{isActiveRoute name='korben.home'}}">
+        <a href="{{pathFor 'korben.home'}}">Home</a>
     </li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
             Data <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li class="{{isActiveRoute name='rabbit.customer'}}">
-                <a href="{{pathFor 'rabbit.customer'}}">Customer</a>
+            <li class="{{isActiveRoute name='korben.customer'}}">
+                <a href="{{pathFor 'korben.customer'}}">Customer</a>
             </li>
-            <li class="{{isActiveRoute name='rabbit.order'}}">
-                <a href="{{pathFor 'rabbit.order'}}">Order</a>
+            <li class="{{isActiveRoute name='korben.order'}}">
+                <a href="{{pathFor 'korben.order'}}">Order</a>
             </li>
         </ul>
     </li>
     ...
 </template>
 
-<template name="rabbit_navbarRight">
-    <li class="{{isActiveRoute name='rabbit.home'}}">
-        <a href="{{pathFor 'rabbit.home'}}">Home</a>
+<template name="korben_navbarRight">
+    <li class="{{isActiveRoute name='korben.home'}}">
+        <a href="{{pathFor 'korben.home'}}">Home</a>
     </li>
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
             Data <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li class="{{isActiveRoute name='rabbit.customer'}}">
-                <a href="{{pathFor 'rabbit.customer'}}">Customer</a>
+            <li class="{{isActiveRoute name='korben.customer'}}">
+                <a href="{{pathFor 'korben.customer'}}">Customer</a>
             </li>
-            <li class="{{isActiveRoute name='rabbit.order'}}">
-                <a href="{{pathFor 'rabbit.order'}}">Order</a>
+            <li class="{{isActiveRoute name='korben.order'}}">
+                <a href="{{pathFor 'korben.order'}}">Order</a>
             </li>
         </ul>
     </li>
@@ -177,11 +177,11 @@ Security.defineMethod("rabbit_ifReporter", {
 </template>
 ```
 
-- Create list view of select options in `rabbit/client/app/list.js, list_for_report.js`
+- Create list view of select options in `korben/client/app/list.js, list_for_report.js`
 
 ```js
 // List
-Rabbit.List = {
+Korben.List = {
     gender: function () {
         var list = [];
         list.push({label: "(Select One)", value: ""});
@@ -195,7 +195,7 @@ Rabbit.List = {
         var list = [];
         list.push({label: "(Select One)", value: ""});
 
-        Rabbit.Collection.Address.find()
+        Korben.Collection.Address.find()
             .forEach(function (obj) {
                 list.push({label: obj._id + ' : ' + obj.name, value: obj._id});
             });
@@ -205,7 +205,7 @@ Rabbit.List = {
 };
 
 // List for report
-Rabbit.ListForReport = {
+Korben.ListForReport = {
     type: function () {
         var list = [];
         list.push({label: "(Select All)", value: ""});
@@ -219,10 +219,10 @@ Rabbit.ListForReport = {
 ```
 
 - Create any methods (server, client or common)
-- Create `Test CRUD`: collection, security in `rabbit/server/security/security.js`, publish/sub, tabular, router, template...
+- Create `Test CRUD`: collection, security in `korben/server/security/security.js`, publish/sub, tabular, router, template...
 
 ## Internal Libraries
-- Clear Select2, Selectize in `rabbit/client/app/libraries`
+- Clear Select2, Selectize in `korben/client/app/libraries`
 
 ```js
 clearSelect2([elements]);
@@ -238,7 +238,7 @@ AutoForm.hooks({
 })
 ```
 
-- Date, Time, DateTime Picker in `rabbit/client/app/libraries`
+- Date, Time, DateTime Picker in `korben/client/app/libraries`
 
 ```js
 DateTimePicker.date(selector, [options]);
@@ -251,7 +251,7 @@ Template.templateName.onRendered(function(){
 })
 ```
 
-- Inputmask in `rabbit/client/app/libraries`
+- Inputmask in `korben/client/app/libraries`
 
 ```js
 Inputmask.currency(selector, [options]);
@@ -267,12 +267,12 @@ Template.templateName.onRendered(function(){
 })
 ```
 
-- Render Template in `rabbit/client/app/libraries`
+- Render Template in `korben/client/app/libraries`
 
 ```js
 // Use with bootbox
 var data = {name: value, gender: value};
-var tmpl = renderTemplate(Template.rabbit_testShow, data);
+var tmpl = renderTemplate(Template.korben_testShow, data);
 // return object = {html: ..., instance: ...}
 
 bootbox.dialog({
@@ -281,7 +281,7 @@ bootbox.dialog({
         });
 ```
 
-- Modal Template in `rabbit/client/app/libraries`
+- Modal Template in `korben/client/app/libraries`
 
 ```js
 // Template
@@ -333,7 +333,7 @@ bootbox.dialog({
 },
 ```
 
-- Modal Max Height in `rabbit/client/app/libraries`
+- Modal Max Height in `korben/client/app/libraries`
 
 ```js
 // Use with bootbox
@@ -346,7 +346,7 @@ bootbox.dialog({
 }
 ```
 
-- Alertify in `rabbit/client/app/libraries`
+- Alertify in `korben/client/app/libraries`
 
 ```js
 // How to use custom
@@ -381,22 +381,22 @@ var currentDate = ReactiveMethod.call("currentDate"); // 'YYYY-MM-DD HH:mm:ss'
 ```
 
 ## Namespace
-- Router: `rabbit.routerName` (name), `rabbit/routerName` (url)
-- Router for report: rabbit.routerName`Report` (name), rabbit/routerName`Report` and rabbit/routerName`ReportGen` (url)
-- Tabular: `rabbit_customerList`
-- Template: `rabbit_templateName`
-- Template for report: rabbit_templateName`Report`, rabbit_templateName`ReportGen`
-- Method: `rabbit_methodName`
-- Publish/Sub: `rabbit_pubName`
-- Security method: `rabbit_ifSecurityName`
+- Router: `korben.routerName` (name), `korben/routerName` (url)
+- Router for report: korben.routerName`Report` (name), korben/routerName`Report` and korben/routerName`ReportGen` (url)
+- Tabular: `korben_customerList`
+- Template: `korben_templateName`
+- Template for report: korben_templateName`Report`, korben_templateName`ReportGen`
+- Method: `korben_methodName`
+- Publish/Sub: `korben_pubName`
+- Security method: `korben_ifSecurityName`
     
 ## Note
 - Session: `currentModule` and `currentBranch`
 - Capnel collections:
-    - Cpanel.Collection.Setting() -> `global sub`
-    - Cpanel.Collection.Company()
-    - Cpanel.Collection.Branch() -> `global sub`
-    - Cpanel.Collection.Currency() -> `global sub`
-    - Cpanel.Collection.User() -> `global sub`
-    - Cpanel.Collection.Exchange()
+    - Korben.Collection.Setting() -> `global sub`
+    - Korben.Collection.Company()
+    - Korben.Collection.Branch() -> `global sub`
+    - Korben.Collection.Currency() -> `global sub`
+    - Korben.Collection.User() -> `global sub`
+    - Korben.Collection.Exchange()
     - Files() -> `global sub` (collection for managing file upload like images, pdf ...)

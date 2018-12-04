@@ -1,7 +1,7 @@
-Template.Cpanel_sidebarMenuTool.helpers({
+Template.Korben_sidebarMenuTool.helpers({
     restore () {
         let currentModule = Session.get('currentModule');
-        if (currentModule == 'Cpanel') {
+        if (currentModule == 'Korben') {
             return true
         }
         

@@ -1,12 +1,12 @@
 /**
  * Collection
  */
-Cpanel.Collection.Branch = new Mongo.Collection("cpanel_branch");
+Korben.Collection.Branch = new Mongo.Collection("korben_branch");
 
 /**
  * Schema
  */
-Cpanel.Schema.Branch = new SimpleSchema({
+Korben.Schema.Branch = new SimpleSchema({
     khName: {
         type: String,
         label: 'Kh Name',
@@ -56,4 +56,4 @@ Cpanel.Schema.Branch = new SimpleSchema({
 /**
  * Attach schema
  */
-Cpanel.Collection.Branch.attachSchema(Cpanel.Schema.Branch);
+Korben.Collection.Branch.attachSchema(Korben.Schema.Branch);

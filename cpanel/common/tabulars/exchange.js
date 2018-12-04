@@ -1,6 +1,6 @@
-Cpanel.TabularTable.Exchange = new Tabular.Table({
-    name: "cpanelExchangeList",
-    collection: Cpanel.Collection.Exchange,
+Korben.TabularTable.Exchange = new Tabular.Table({
+    name: "korbenExchangeList",
+    collection: Korben.Collection.Exchange,
     pagingType: "full_numbers",
     autoWidth: false,
     columnDefs: [
@@ -8,7 +8,7 @@ Cpanel.TabularTable.Exchange = new Tabular.Table({
     ],
     order: [['1', 'desc']],
     columns: [
-        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Cpanel_exchangeAction},
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.Korben_exchangeAction},
         {
             data: "exDate",
             title: "Date",

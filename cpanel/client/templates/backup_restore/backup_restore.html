@@ -1,6 +1,6 @@
 <!--Backup-->
-<template name="Cpanel_backup">
-    {{#autoForm schema=Cpanel.Schema.Backup id="Cpanel_backup"}}
+<template name="Korben_backup">
+    {{#autoForm schema=Korben.Schema.Backup id="Korben_backup"}}
         <div class="row">
             <div class="col-md-6">
                 {{> afQuickField name='token' type="hidden"}}
@@ -20,12 +20,12 @@
 </template>
 
 <!--Restore-->
-<template name="Cpanel_restore">
+<template name="Korben_restore">
     {{#if restoreWaiting}}
         {{> loading}}
     {{/if}}
 
-    {{#autoForm schema=Cpanel.Schema.Restore id="Cpanel_restore" enctype="multipart/form-data"}}
+    {{#autoForm schema=Korben.Schema.Restore id="Korben_restore" enctype="multipart/form-data"}}
         <div class="row">
             <div class="col-md-6">
                 {{> afQuickField name='token' type="hidden"}}

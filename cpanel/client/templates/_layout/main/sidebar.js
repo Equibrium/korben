@@ -18,7 +18,7 @@ Template._sidebarForm.onCreated(function () {
     self.autorun(function () {
         let currentUser = Meteor.user();
         if (currentUser && currentUser.rolesBranch) {
-            self.subscribe('Cpanel.branch', {_id: {$in: currentUser.rolesBranch}});
+            self.subscribe('Korben.branch', {_id: {$in: currentUser.rolesBranch}});
         }
     });
 });

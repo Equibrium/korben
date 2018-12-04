@@ -1,7 +1,7 @@
 <!--Setting-->
-<template name="Cpanel_setting">
-    {{#if $and (subsReady  "Cpanel.setting") templateSubsReady}}
-        {{#autoForm collection=Cpanel.Collection.Setting id="Cpanel_setting" doc=data type="update"}}
+<template name="Korben_setting">
+    {{#if $and (subsReady  "Korben.setting") templateSubsReady}}
+        {{#autoForm collection=Korben.Collection.Setting id="Korben_setting" doc=data type="update"}}
             <div class="row">
                 <div class="col-md-6">
                     {{> afQuickField name='headOffice'}}

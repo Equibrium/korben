@@ -12,7 +12,7 @@ Meteor.methods({
         var tDate = moment(date[1], 'YYYY-MM-DD').add(1, 'days').toDate();
 
         /****** Title *****/
-        data.title = Cpanel.Collection.Company.findOne();
+        data.title = Korben.Collection.Company.findOne();
 
         /****** Header *****/
         data.header = params;

@@ -1,22 +1,22 @@
 /**
  * Company
  */
-Cpanel.Collection.Company.permit(['update']).cpanel_ifSuperOrAdmin().apply();
+Korben.Collection.Company.permit(['update']).korben_ifSuperOrAdmin().apply();
 
 /**
  * Setting
  */
-Cpanel.Collection.Setting.permit(['update']).cpanel_ifSuperOrAdmin().apply();
+Korben.Collection.Setting.permit(['update']).korben_ifSuperOrAdmin().apply();
 
 /**
  * Branch
  */
-Cpanel.Collection.Branch.permit(['insert']).cpanel_ifSuper().apply();
-Cpanel.Collection.Branch.permit(['update']).cpanel_ifSuperOrAdmin().apply();
-Cpanel.Collection.Branch.permit(['remove']).cpanel_ifSuper().apply();
+Korben.Collection.Branch.permit(['insert']).korben_ifSuper().apply();
+Korben.Collection.Branch.permit(['update']).korben_ifSuperOrAdmin().apply();
+Korben.Collection.Branch.permit(['remove']).korben_ifSuper().apply();
 
 /**
  * Exchange
  */
-//Cpanel.Collection.Exchange.permit(['insert', 'update', 'remove']).cpanel_ifSuperOrAdmin().apply();
-Cpanel.Collection.Exchange.permit(['insert', 'update', 'remove']).ifLoggedIn().apply();
+//Korben.Collection.Exchange.permit(['insert', 'update', 'remove']).korben_ifSuperOrAdmin().apply();
+Korben.Collection.Exchange.permit(['insert', 'update', 'remove']).ifLoggedIn().apply();

@@ -1,7 +1,7 @@
 <!--Form-->
-<template name="Cpanel_eventReport">
+<template name="Korben_eventReport">
     {{#if isSubReady}}
-        {{#autoForm schema=Cpanel.Schema.EventReport id="Cpanel_eventReport"}}
+        {{#autoForm schema=Korben.Schema.EventReport id="Korben_eventReport"}}
             <div class="row">
                 <div class="col-md-6">
                     {{> afQuickField name='user'}}
@@ -24,7 +24,7 @@
 
 
 <!--Generate-->
-<template name="Cpanel_eventReportGen">
+<template name="Korben_eventReportGen">
     {{#if data}}
         {{#reportTpl options}}
 

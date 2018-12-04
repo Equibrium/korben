@@ -1,12 +1,12 @@
 /**
  * Collection
  */
-Cpanel.Collection.Currency = new Mongo.Collection("cpanel_currency");
+Korben.Collection.Currency = new Mongo.Collection("korben_currency");
 
 /**
  * Schema
  */
-Cpanel.Schema.Currency = new SimpleSchema({
+Korben.Schema.Currency = new SimpleSchema({
     name: {
         type: String,
         label: "Name",
@@ -27,4 +27,4 @@ Cpanel.Schema.Currency = new SimpleSchema({
 /**
  * Attach schema
  */
-Cpanel.Collection.Currency.attachSchema(Cpanel.Schema.Currency);
+Korben.Collection.Currency.attachSchema(Korben.Schema.Currency);

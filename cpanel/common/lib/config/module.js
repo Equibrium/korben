@@ -4,10 +4,10 @@
 Module = typeof Module === 'undefined' ? {} : Module;
 Meteor.isClient && Template.registerHelper('Module', Module);
 
-Module.Cpanel = {
-    name: 'Cpanel System',
+Module.Korben = {
+    name: 'Korben System',
     version: '2.0.0',
-    summary: 'Cpanel Management System is ...',
+    summary: 'Korben Management System is ...',
     roles: [
         'super',
         'admin'
@@ -16,11 +16,11 @@ Module.Cpanel = {
         data: [
             'roles',
             'users',
-            'cpanel_setting',
-            'cpanel_currency',
-            'cpanel_company',
-            'cpanel_branch',
-            'cpanel_exchange'
+            'korben_setting',
+            'korben_currency',
+            'korben_company',
+            'korben_branch',
+            'korben_exchange'
         ]
     }
 };

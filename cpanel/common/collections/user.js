@@ -1,7 +1,7 @@
 /**
  * Schema
  */
-Cpanel.Schema.User = new SimpleSchema({
+Korben.Schema.User = new SimpleSchema({
     username: {
         type: String,
         label: 'Username',
@@ -42,7 +42,7 @@ Cpanel.Schema.User = new SimpleSchema({
             type: "select-multiple",
             //multiple: true,
             options: function () {
-                return Cpanel.List.role();
+                return Korben.List.role();
             }
         }
     },
@@ -52,13 +52,13 @@ Cpanel.Schema.User = new SimpleSchema({
             type: "select-multiple",
             //multiple: true,
             options: function () {
-                return Cpanel.List.branch(false);
+                return Korben.List.branch(false);
             }
         }
     }
 });
 
-Cpanel.Schema.UserProfile = new SimpleSchema({
+Korben.Schema.UserProfile = new SimpleSchema({
     username: {
         type: String,
         label: 'Username',
@@ -80,7 +80,7 @@ Cpanel.Schema.UserProfile = new SimpleSchema({
     }
 });
 
-Cpanel.Schema.UserPassword = new SimpleSchema({
+Korben.Schema.UserPassword = new SimpleSchema({
     oldPassword: {
         type: String,
         label: "Old password",

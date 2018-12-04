@@ -8,7 +8,7 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 {{> Template.dynamic template=sidebarMenu}}
-                {{> Cpanel_sidebarMenuTool}}
+                {{> Korben_sidebarMenuTool}}
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -18,7 +18,7 @@
 <!--Sidebar for branch office-->
 <template name="_sidebarForm">
     {{#if templateSubsReady}}
-        {{#autoForm schema=Cpanel.Schema.SidebarBranch id="_sidebarForm" class="sidebar-form"}}
+        {{#autoForm schema=Korben.Schema.SidebarBranch id="_sidebarForm" class="sidebar-form"}}
             {{> afFieldInput name="branch"}}
         {{/autoForm}}
     {{else}}

@@ -4,7 +4,7 @@ Package.describe({
     // Brief, one-line summary of the package.
     summary: 'Breadcrumb For Flow Router',
     // URL to the Git repository containing the source code for this package.
-    git: 'https://github.com/thearabbit/flow-router-breadcrumb.git',
+    git: 'https://github.com/theakorben/flow-router-breadcrumb.git',
     // By default, Meteor will default to using README.md for documentation.
     // To avoid submitting documentation, set this field to null.
     documentation: 'README.md'

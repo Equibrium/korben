@@ -1,4 +1,4 @@
-{{#template name="Cpanel_helpSetting"}}
+{{#template name="Korben_helpSetting"}}
 
 ## Setting
 

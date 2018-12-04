@@ -1,4 +1,4 @@
-{{#template name="Cpanel_helpBranch"}}
+{{#template name="Korben_helpBranch"}}
 
 ## Branch
 

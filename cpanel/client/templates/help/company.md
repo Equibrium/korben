@@ -1,4 +1,4 @@
-{{#template name="Cpanel_helpCompany"}}
+{{#template name="Korben_helpCompany"}}
 
 ## Company
 

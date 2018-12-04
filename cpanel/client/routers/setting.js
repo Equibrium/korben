@@ -1,14 +1,14 @@
-cpanelRoutes.route('/setting', {
-    name: 'cpanel.setting',
+korbenRoutes.route('/setting', {
+    name: 'korben.setting',
     title: 'Setting',
     action: function (params, queryParams) {
-        Layout.main('Cpanel_setting');
+        Layout.main('Korben_setting');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: 'Setting',
         icon: 'cogs',
-        parent: 'cpanel.welcome'
+        parent: 'korben.welcome'
     }
 });
